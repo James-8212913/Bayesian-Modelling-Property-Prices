@@ -1,0 +1,206 @@
+<!-- # --- -->
+<!-- # title: "BushFire Data Preparation" -->
+<!-- # output: html_document -->
+<!-- # --- -->
+<!-- # -->
+<!-- # ```{r setup, include=FALSE} -->
+<!-- # knitr::opts_chunk$set(echo = TRUE) -->
+<!-- # ``` -->
+
+### BushFire : Preparation of Data
+
+#### Reading Data : NASA FIRMS
+This document will show how to do its data preparation
+First, import the necessary libraries
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(data.table)
+library(geosphere)
+```
+
+Import raw data having filter conditions applied
+```{r eval=FALSE}
+#Conditions applied: 
+#Select hotspot/firepixes with "high" confidence level
+#Select pixel points only under NSW properties.These lats and longs are boundaries of collected property data
+#Period: Ran for 2019-09-01 to 2020-03-31
+Df_2019 <- as_tibble(fread("DataSet/fire_archive_V1_117459.csv", header = TRUE, stringsAsFactors = FALSE) %>%
+       filter(confidence=='h') %>%
+       filter(latitude > -35  & longitude >=150 & latitude<= -33 & longitude < 152) %>%  
+       filter(acq_date >= '2019-09-01' & acq_date <= '2020-03-31' ) ) 
+```
+Second, have a look on the structure of data and number of rows data
+```{r eval=FALSE}
+nrow(DF_2019)
+str(DF_2019)
+```
+
+Next, initialise with an empty tibble
+```{r eval=FALSE}
+res_nf <- as_tibble()
+```
+#### Merging with Property Geocode :
+Then every fire pixel data compared against geocode data of every NSW property and finding out its the distance from the property using `distHarvesine` method. This will return all the hotspots/fire pixels at the radius upto 15km distance. 
+
+```{r eval=FALSE}
+for(i in 1: nrow(Df_2019)){
+  Df2019_ind <- Df_2019[i,]
+  p_gc <- as_tibble(fread("DataSet/geocode_data.csv", header = TRUE, stringsAsFactors = FALSE) %>%
+            filter(country=='Australia' & state=='New South Wales') %>%
+            mutate(
+              #Apply distHarvesine method
+              dist_between=distHaversine(cbind(Df2019_ind$longitude,Df2019_ind$latitude),cbind(lng,lat))/1000,
+              FIRMS_19_lat=Df2019_ind$latitude,
+              FIRMS_19_lng=Df2019_ind$longitude,
+              FIRMS_19_cf=Df2019_ind$confidence,
+              FIRMS_19_aq=Df2019_ind$acq_date
+            ) %>%
+            filter(dist_between<=15) %>%
+            dplyr::select(FIRMS_19_lat,FIRMS_19_lng,FIRMS_19_cf,FIRMS_19_aq,dist_between,no,postal_code))
+  
+  res_nf <- rbind(p_gc,res_nf)
+}
+```
+
+Then export the result set into csv file like:
+```{r eval=FALSE}
+write_csv(res_nf,"Results/NASA_Firms_Impact_15km_2019.csv")
+```
+The above process will be repeated for 2018-09 to 2019-03 as well. 
+
+#### Scraping ATO Deferral from Web :
+First, import the necessary libraries
+```{r warning=FALSE, message=FALSE}
+library(xml2)
+library(rvest)
+library(stringr)
+library(XML)
+```
+Next,connect to the ATO webpage URL and retrieve LGA's and Postcode related to New South Wales 
+
+```{r eval=FALSE }
+ato_webpg <- read_html("https://www.ato.gov.au/Individuals/Dealing-with-disasters/In-detail/Specific-disasters/Bushfires-2019-20/?anchor=NotinanimpactedpostcodeorLGA#NewSouthWales")
+
+df <- ato_webpg %>%
+  html_nodes("div:nth-child(1)  > p:nth-child(n+14):nth-child(-n+49)") %>%
+  xml_text() %>%
+  str_split_fixed(":", 2) 
+```
+
+Parse the data to pivot the postcode values into tabular format
+
+```{r eval=FALSE }
+LGA_Names  <- df[,1]
+postal_code <- strsplit(df[,2],",")
+
+parse <-""
+for (i in 1:nrow(df)) {
+  parse<-rbind(as.data.frame(list("LGA"=rep(LGA_Names[i],length(postal_code[[i]])),"postal_code"=as.numeric(postal_code[[i]]))),parse)
+}
+
+df_parse <- as.data.frame(parse)
+```
+Then export the result set into csv file like:
+```{r eval=FALSE}
+write.csv(df_parse,"Bushfire/Results/ATO_Deferred.csv")
+```
+
+##### Add ATO Deferred Flag with Property data :
+```{r eval=FALSE }
+library(data.table)
+library(tidyverse)
+
+#Link it with NASA Firms data
+Firms_19 <- fread("Bushfire/Results/NASA_Firms_Impact_15km_2019.csv", header = TRUE, stringsAsFactors = FALSE)
+Firms_18 <- fread("Bushfire/Results/NASA_Firms_Impact_15km_2018.csv", header = TRUE, stringsAsFactors = FALSE)
+
+ATO_Def <- fread("Bushfire/Results/ATO_Deferred.csv", header = TRUE, stringsAsFactors = FALSE) %>%
+           select(LGA,postal_code)
+
+Firms_19_ato <-  left_join(Firms_19, ATO_Def, by="postal_code") %>%
+  dplyr::select(FIRMS_19_lat,FIRMS_19_lng,FIRMS_19_cf,FIRMS_19_aq,dist_between,no,postal_code,LGA)
+
+Firms_19_ato$ato_flag <- if_else(is.na(Firms_19_ato$LGA),"N","Y") 
+
+Firms_18_ato <-  left_join(Firms_18, ATO_Def, by="postal_code") %>%
+  dplyr::select(FIRMS_18_lat,FIRMS_18_lng,FIRMS_18_cf,FIRMS_18_aq,dist_between,no,postal_code,LGA)
+
+Firms_18_ato$ato_flag <- if_else(is.na(Firms_18_ato$LGA),"N","Y") 
+
+write.csv(Firms_19_ato,"Bushfire/Results/NASA_Firms_Impact_15km_2019_atoflag.csv")
+write.csv(Firms_18_ato,"Bushfire/Results/NASA_Firms_Impact_15km_2018_atoflag.csv")
+```
+Final view of the results looks like:
+
+```{r}
+as_tibble(fread("../BushFire/Results/NASA_Firms_Impact_15km_2018_atoflag.csv")) %>% 
+  glimpse()
+```
+
+### NOM : Net Overseas Migration from ABS
+Based on the data collected from ABS via (3218.0 - Regional Population Growth, Australia, 2018-19, 2017-18), we extracted the net migration numbers for every suburb/council recorded by ABS.
+
+```{r eval=FALSE}
+library(readxl)
+library(tidyverse)
+
+#2019 Dataset
+
+setwd("./../NOM/DataSet")
+
+xl_data_2019 <- "NOM_32180ds0002_2018-19.xls"
+xl_data_2018 <- "NOM_32180ds0002_2017-18.xls"
+
+df_nsw_2019 <- read_excel(path = xl_data_2019, sheet = "Table 1")
+df_nsw_2018 <- read_excel(path = xl_data_2018, sheet = "Table 1")
+
+cnt_2019 <- nrow(df_nsw_2019)
+cnt_2018 <- nrow(df_nsw_2018)
+
+#Remove headers and read only the data rows corresponding to NOM no's
+
+Ext_tib_2019 <- data.frame(rep(2019,cnt_2019-8),
+                      df_nsw_2019[9:cnt_2019,2],
+                      df_nsw_2019[9:cnt_2019,11]) %>%
+                  na.omit() 
+
+colnames(Ext_tib_2019) <- c("Year", "Suburb", "No_ofNOM")
+
+Ext_tib_2018 <- data.frame(rep(2018,cnt_2018-8),
+                      df_nsw_2018[9:cnt_2018,2],
+                      df_nsw_2018[9:cnt_2018,11]) %>%
+                      na.omit() 
+
+colnames(Ext_tib_2018) <- c("Year", "Suburb", "No_ofNOM")
+
+colnames(Ext_tib_2019) <- c("Year", "LGA", "Nom")
+colnames(Ext_tib_2018) <- c("Year", "LGA", "Nom")
+
+write.csv(rbind(Ext_tib_2019,Ext_tib_2018),"./Results/Nom_LGA.csv")
+```
+### SEIFA : SocioEconomic Indicator Indexes from ABS
+Based on the data collected from ABS via (2071.0 - Census of Population and Housing: Reflecting Australia - Stories from the Census, 2016), we extracted Index of Relative Socio-economic Advantage and Disadvantage,Index of Economic Resources	,Index of Education and Occupation Scores and Decile points
+
+```{r eval=FALSE}
+library(readxl)
+library(tidyverse)
+
+#2016 Dataset
+
+xl_data_2016 <- "./SEIFA/2033055001 - ssc indexes.xls"
+df_nsw_2016 <- read_excel(path = xl_data_2016, sheet = "Table 1")
+
+cnt_2016 <- nrow(df_nsw_2016)
+
+Ext_tib_2016 <- data.frame(Year = rep(2016,cnt_2016-5),
+                           Suburb = df_nsw_2016[6:cnt_2016,2],
+                           SAdvDisav_score = df_nsw_2016[6:cnt_2016,5], #Socio-Economic Score	
+                           SAdvDisav_decile = df_nsw_2016[6:cnt_2016,6], #RSocio-Economic Decile
+                           ER_score=  df_nsw_2016[6:cnt_2016,7], #Economic Resources	Score
+                           ER_decile=  df_nsw_2016[6:cnt_2016,8], #Economic Resources	Decile
+                           EDUOCC_score=  df_nsw_2016[6:cnt_2016,9], #Education and Occupation	Score
+                           EDUOCC_decile=  df_nsw_2016[6:cnt_2016,10] #Education and Occupation	Decile
+                           )
+
+write.csv(Ext_tib_2016,"SEIFA/Results/SEIFA_2016.csv")
+```

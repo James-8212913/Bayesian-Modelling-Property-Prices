@@ -1,0 +1,276 @@
+date,name,code,lat,lon,distance,temp_avg
+18-Apr,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,22.05
+18-May,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,16.8
+18-Jun,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,13.75
+18-Jul,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,14.15
+18-Aug,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,14.35
+18-Sep,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,16.15
+18-Oct,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,18.25
+18-Nov,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,20.9
+18-Dec,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,23.05
+19-Jan,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,25.65
+19-Feb,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,23.6
+19-Mar,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,22.95
+19-Apr,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,20.4
+19-May,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,17.7
+19-Jun,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,14.25
+19-Jul,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,14.6
+19-Aug,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,14.45
+19-Sep,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,16.95
+19-Oct,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,19.55
+19-Nov,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,21.75
+19-Dec,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,22.85
+20-Jan,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,24.5
+20-Feb,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,27.1
+20-Mar,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,21.45
+20-Apr,Sydney (Observatory Hill),66062,-33.86,151.21,1.1,20.07
+18-Apr,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,22.25
+18-May,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,17
+18-Jun,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,13.65
+18-Jul,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,14.1
+18-Aug,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,14.3
+18-Sep,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,16.05
+18-Oct,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,18.3
+18-Nov,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,20.85
+18-Dec,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,23.05
+19-Jan,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,25.5
+19-Feb,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,23.55
+19-Mar,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,22.8
+19-Apr,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,20.4
+19-May,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,17.7
+19-Jun,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,14.25
+19-Jul,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,14.55
+19-Aug,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,14.35
+19-Sep,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,17
+19-Oct,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,19.55
+19-Nov,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,21.8
+19-Dec,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,23.3
+20-Jan,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,24.8
+20-Feb,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,23.75
+20-Mar,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,21.4
+20-Apr,Sydney (Observatory Hill Comparison),66214,-33.86,151.2,1.3,19.93
+18-Apr,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,20.85
+18-May,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,15.15
+18-Jun,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,12.4
+18-Jul,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,11.95
+18-Aug,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,12.1
+18-Sep,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,14.35
+18-Oct,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,17.7
+18-Nov,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,19.8
+18-Dec,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,22.75
+19-Jan,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,25.7
+19-Feb,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,22.75
+19-Mar,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,22.05
+19-Apr,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,18.8
+19-May,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,15.5
+19-Jun,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,12.8
+19-Jul,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,12.45
+19-Aug,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,12.65
+19-Sep,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,15.4
+19-Oct,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,18.05
+19-Nov,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,20.3
+19-Dec,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,22.55
+20-Jan,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,24.15
+20-Feb,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,22.85
+20-Mar,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,20.4
+20-Apr,Canterbury Racecourse AWS,66194,-33.91,151.11,9.7,18.12
+18-Apr,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,21.6
+18-May,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,15.75
+18-Jun,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,12.8
+18-Jul,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,12.4
+18-Aug,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,12.6
+18-Sep,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,15.1
+18-Oct,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,18.15
+18-Nov,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,20.4
+18-Dec,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,23.45
+19-Jan,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,26.4
+19-Feb,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,23.5
+19-Mar,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,22.65
+19-Apr,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,19.65
+19-May,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,16.55
+19-Jun,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,13.25
+19-Jul,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,13.05
+19-Aug,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,13.05
+19-Sep,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,15.9
+19-Oct,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,19.05
+19-Nov,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,21.55
+19-Dec,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,23.4
+20-Jan,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,24.9
+20-Feb,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,23.45
+20-Mar,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,21
+20-Apr,Sydney Olympic Park AWS (Archery Centre),66212,-33.83,151.07,13.3,19.1
+18-Apr,Terrey Hills AWS,66059,-33.69,151.23,19.9,20.4
+18-May,Terrey Hills AWS,66059,-33.69,151.23,19.9,15.25
+18-Jun,Terrey Hills AWS,66059,-33.69,151.23,19.9,12.15
+18-Jul,Terrey Hills AWS,66059,-33.69,151.23,19.9,12.8
+18-Aug,Terrey Hills AWS,66059,-33.69,151.23,19.9,13
+18-Sep,Terrey Hills AWS,66059,-33.69,151.23,19.9,14.8
+18-Oct,Terrey Hills AWS,66059,-33.69,151.23,19.9,16.9
+18-Nov,Terrey Hills AWS,66059,-33.69,151.23,19.9,19.25
+18-Dec,Terrey Hills AWS,66059,-33.69,151.23,19.9,21.85
+19-Jan,Terrey Hills AWS,66059,-33.69,151.23,19.9,24.45
+19-Feb,Terrey Hills AWS,66059,-33.69,151.23,19.9,22.05
+19-Mar,Terrey Hills AWS,66059,-33.69,151.23,19.9,21.2
+19-Apr,Terrey Hills AWS,66059,-33.69,151.23,19.9,19.05
+19-May,Terrey Hills AWS,66059,-33.69,151.23,19.9,16.05
+19-Jun,Terrey Hills AWS,66059,-33.69,151.23,19.9,12.9
+19-Jul,Terrey Hills AWS,66059,-33.69,151.23,19.9,12.95
+19-Aug,Terrey Hills AWS,66059,-33.69,151.23,19.9,12.85
+19-Sep,Terrey Hills AWS,66059,-33.69,151.23,19.9,15.7
+19-Oct,Terrey Hills AWS,66059,-33.69,151.23,19.9,18
+19-Nov,Terrey Hills AWS,66059,-33.69,151.23,19.9,20.25
+19-Dec,Terrey Hills AWS,66059,-33.69,151.23,19.9,21.9
+20-Jan,Terrey Hills AWS,66059,-33.69,151.23,19.9,23.05
+20-Feb,Terrey Hills AWS,66059,-33.69,151.23,19.9,21.95
+20-Mar,Terrey Hills AWS,66059,-33.69,151.23,19.9,19.8
+20-Apr,Terrey Hills AWS,66059,-33.69,151.23,19.9,18.8
+18-Apr,Bankstown Airport AWS,66137,-33.92,150.98,21.4,21.55
+18-May,Bankstown Airport AWS,66137,-33.92,150.98,21.4,15.35
+18-Jun,Bankstown Airport AWS,66137,-33.92,150.98,21.4,12.6
+18-Jul,Bankstown Airport AWS,66137,-33.92,150.98,21.4,12.05
+18-Aug,Bankstown Airport AWS,66137,-33.92,150.98,21.4,12.35
+18-Sep,Bankstown Airport AWS,66137,-33.92,150.98,21.4,14.95
+18-Oct,Bankstown Airport AWS,66137,-33.92,150.98,21.4,18.4
+18-Nov,Bankstown Airport AWS,66137,-33.92,150.98,21.4,20.7
+18-Dec,Bankstown Airport AWS,66137,-33.92,150.98,21.4,23.7
+19-Jan,Bankstown Airport AWS,66137,-33.92,150.98,21.4,26.9
+19-Feb,Bankstown Airport AWS,66137,-33.92,150.98,21.4,23.65
+19-Mar,Bankstown Airport AWS,66137,-33.92,150.98,21.4,22.7
+19-Apr,Bankstown Airport AWS,66137,-33.92,150.98,21.4,19.45
+19-May,Bankstown Airport AWS,66137,-33.92,150.98,21.4,15.6
+19-Jun,Bankstown Airport AWS,66137,-33.92,150.98,21.4,12.9
+19-Jul,Bankstown Airport AWS,66137,-33.92,150.98,21.4,12.5
+19-Aug,Bankstown Airport AWS,66137,-33.92,150.98,21.4,12.8
+19-Sep,Bankstown Airport AWS,66137,-33.92,150.98,21.4,16.15
+19-Oct,Bankstown Airport AWS,66137,-33.92,150.98,21.4,18.85
+19-Nov,Bankstown Airport AWS,66137,-33.92,150.98,21.4,21.6
+19-Dec,Bankstown Airport AWS,66137,-33.92,150.98,21.4,23.5
+20-Jan,Bankstown Airport AWS,66137,-33.92,150.98,21.4,24.95
+20-Feb,Bankstown Airport AWS,66137,-33.92,150.98,21.4,23.6
+20-Mar,Bankstown Airport AWS,66137,-33.92,150.98,21.4,20.95
+20-Apr,Bankstown Airport AWS,66137,-33.92,150.98,21.4,18.65
+18-Apr,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,20.65
+18-May,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,14.75
+18-Jun,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,11.85
+18-Jul,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,11.85
+18-Aug,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,12.2
+18-Sep,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,14.65
+18-Oct,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,17.8
+18-Nov,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,19.9
+18-Dec,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,23.3
+19-Jan,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,26.45
+19-Feb,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,23.15
+19-Mar,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,22.15
+19-Apr,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,18.65
+19-May,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,15.15
+19-Jun,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,12.45
+19-Jul,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,12.05
+19-Aug,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,12.4
+19-Sep,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,15.45
+19-Oct,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,18.1
+19-Nov,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,20.85
+19-Dec,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,22.95
+20-Jan,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,24.4
+20-Feb,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,23.15
+20-Mar,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,20.3
+20-Apr,Holsworthy Aerodrome AWS,66161,-33.99,150.95,27.5,17.95
+18-Apr,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,21.4
+18-May,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,15.2
+18-Jun,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,12.35
+18-Jul,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,12
+18-Aug,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,12.3
+18-Sep,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,15.3
+18-Oct,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,18
+18-Nov,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,20.2
+18-Dec,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,23.3
+19-Jan,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,26.7
+19-Feb,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,23.5
+19-Mar,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,22.4
+19-Apr,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,19
+19-May,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,15.6
+19-Jun,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,12.8
+19-Jul,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,12.2
+19-Aug,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,12.7
+19-Sep,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,15.7
+19-Oct,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,18.9
+19-Nov,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,21.6
+19-Dec,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,23.6
+20-Jan,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,25.1
+20-Feb,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,23.2
+20-Mar,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,20.4
+20-Apr,Horsley Park Equestrian Centre AWS,67119,-33.85,150.86,32.5,18.2
+18-Apr,Badgerys Creek AWS,67108,-33.9,150.73,44.3,20.9
+18-May,Badgerys Creek AWS,67108,-33.9,150.73,44.3,14.5
+18-Jun,Badgerys Creek AWS,67108,-33.9,150.73,44.3,11.7
+18-Jul,Badgerys Creek AWS,67108,-33.9,150.73,44.3,11.2
+18-Aug,Badgerys Creek AWS,67108,-33.9,150.73,44.3,11.8
+18-Sep,Badgerys Creek AWS,67108,-33.9,150.73,44.3,14.6
+18-Oct,Badgerys Creek AWS,67108,-33.9,150.73,44.3,17.9
+18-Nov,Badgerys Creek AWS,67108,-33.9,150.73,44.3,19.8
+18-Dec,Badgerys Creek AWS,67108,-33.9,150.73,44.3,21.9
+19-Jan,Badgerys Creek AWS,67108,-33.9,150.73,44.3,28.2
+19-Feb,Badgerys Creek AWS,67108,-33.9,150.73,44.3,23.6
+19-Mar,Badgerys Creek AWS,67108,-33.9,150.73,44.3,22.3
+19-Apr,Badgerys Creek AWS,67108,-33.9,150.73,44.3,18.9
+19-May,Badgerys Creek AWS,67108,-33.9,150.73,44.3,14.6
+19-Jun,Badgerys Creek AWS,67108,-33.9,150.73,44.3,12.2
+19-Jul,Badgerys Creek AWS,67108,-33.9,150.73,44.3,11.5
+19-Aug,Badgerys Creek AWS,67108,-33.9,150.73,44.3,12
+19-Sep,Badgerys Creek AWS,67108,-33.9,150.73,44.3,15.4
+19-Oct,Badgerys Creek AWS,67108,-33.9,150.73,44.3,18.4
+19-Nov,Badgerys Creek AWS,67108,-33.9,150.73,44.3,21.5
+19-Dec,Badgerys Creek AWS,67108,-33.9,150.73,44.3,23.5
+20-Jan,Badgerys Creek AWS,67108,-33.9,150.73,44.3,25.2
+20-Feb,Badgerys Creek AWS,67108,-33.9,150.73,44.3,23.3
+20-Mar,Badgerys Creek AWS,67108,-33.9,150.73,44.3,20.2
+20-Apr,Badgerys Creek AWS,67108,-33.9,150.73,44.3,17.6
+18-Apr,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,20.9
+18-May,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,14.6
+18-Jun,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,11.7
+18-Jul,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,11.2
+18-Aug,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,11.4
+18-Sep,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,14.4
+18-Oct,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,17.9
+18-Nov,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,19.9
+18-Dec,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,23
+19-Jan,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,26.4
+19-Feb,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,23.3
+19-Mar,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,22
+19-Apr,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,18.4
+19-May,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,14.6
+19-Jun,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,12.1
+19-Jul,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,11.6
+19-Aug,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,12.1
+19-Sep,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,15.4
+19-Oct,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,18.3
+19-Nov,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,21
+19-Dec,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,23.1
+20-Jan,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,24.6
+20-Feb,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,23
+20-Mar,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,19.9
+20-Apr,Campbelltown (Mount Annan) NSW,68257,-34.06,150.77,45.3,17.4
+18-Apr,Richmond RAAF NSW,67105,-33.6,150.78,49.8,21.3
+18-May,Richmond RAAF NSW,67105,-33.6,150.78,49.8,14.5
+18-Jun,Richmond RAAF NSW,67105,-33.6,150.78,49.8,11.8
+18-Jul,Richmond RAAF NSW,67105,-33.6,150.78,49.8,11.3
+18-Aug,Richmond RAAF NSW,67105,-33.6,150.78,49.8,12.1
+18-Sep,Richmond RAAF NSW,67105,-33.6,150.78,49.8,15.1
+18-Oct,Richmond RAAF NSW,67105,-33.6,150.78,49.8,18.6
+18-Nov,Richmond RAAF NSW,67105,-33.6,150.78,49.8,20.9
+18-Dec,Richmond RAAF NSW,67105,-33.6,150.78,49.8,24
+19-Jan,Richmond RAAF NSW,67105,-33.6,150.78,49.8,27.5
+19-Feb,Richmond RAAF NSW,67105,-33.6,150.78,49.8,23.7
+19-Mar,Richmond RAAF NSW,67105,-33.6,150.78,49.8,22.6
+19-Apr,Richmond RAAF NSW,67105,-33.6,150.78,49.8,18.9
+19-May,Richmond RAAF NSW,67105,-33.6,150.78,49.8,14.9
+19-Jun,Richmond RAAF NSW,67105,-33.6,150.78,49.8,12
+19-Jul,Richmond RAAF NSW,67105,-33.6,150.78,49.8,11.4
+19-Aug,Richmond RAAF NSW,67105,-33.6,150.78,49.8,12.1
+19-Sep,Richmond RAAF NSW,67105,-33.6,150.78,49.8,15.8
+19-Oct,Richmond RAAF NSW,67105,-33.6,150.78,49.8,19
+19-Nov,Richmond RAAF NSW,67105,-33.6,150.78,49.8,21.8
+19-Dec,Richmond RAAF NSW,67105,-33.6,150.78,49.8,24.5
+20-Jan,Richmond RAAF NSW,67105,-33.6,150.78,49.8,26.2
+20-Feb,Richmond RAAF NSW,67105,-33.6,150.78,49.8,24
+20-Mar,Richmond RAAF NSW,67105,-33.6,150.78,49.8,20.7
+20-Apr,Richmond RAAF NSW,67105,-33.6,150.78,49.8,18.2

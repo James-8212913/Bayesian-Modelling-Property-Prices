@@ -1,0 +1,345 @@
+Error at index : 30367, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 30506, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 31862, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 32123, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 32522, error : Error in (function (..., row.names = NULL, check.rows = FALSE, check.names = TRUE, : arguments imply differing number of rows: 0, 1
+
+Error at index : 32539, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 34075, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 35854, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 37920, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 39636, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 41016, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 42403, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 42901, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 42921, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 45127, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 45256, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 46832, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 48020, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 48651, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 48930, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 49033, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 49072, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 49114, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 49792, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 50624, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 50736, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 50776, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 51587, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 51744, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 52070, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 52232, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 52528, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 52877, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 52878, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 53048, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 53415, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 56286, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 56963, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 56999, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 57572, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 58105, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 59782, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 60733, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 61080, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 61287, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 62084, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 62086, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 62144, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 62156, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 63359, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 63677, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 64146, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 64364, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 64744, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 64749, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 64764, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 64936, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 65048, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 65599, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 65605, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 65614, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 65617, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 65618, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 65644, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 65922, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 65959, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 66220, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 67792, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 68555, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 69805, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 69819, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 70516, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 70535, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 70734, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 70808, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 70809, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 71047, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 71716, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 72217, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 72504, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 73162, error : Error in open.connection(con, "rb"): URL using bad/illegal format or missing URL
+
+Error at index : 73197, error : Error in open.connection(con, "rb"): URL using bad/illegal format or missing URL
+
+Error at index : 73199, error : Error in open.connection(con, "rb"): URL using bad/illegal format or missing URL
+
+Error at index : 73208, error : Error in open.connection(con, "rb"): URL using bad/illegal format or missing URL
+
+Error at index : 73364, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 73521, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 73694, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 74059, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 74087, error : Error in (function (..., row.names = NULL, check.rows = FALSE, check.names = TRUE, : 参数值意味着不同的行数: 0, 1
+
+Error at index : 75501, error : Error in open.connection(con, "rb"): HTTP error 500.
+
+Error at index : 75525, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 75529, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 76543, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 78393, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 78426, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 78481, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 78790, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 80687, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 80782, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 81285, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 84018, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 84065, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 84143, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 84244, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 85090, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 85159, error : Error in (function (..., row.names = NULL, check.rows = FALSE, check.names = TRUE, : 参数值意味着不同的行数: 0, 1
+
+Error at index : 85535, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 85555, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 85648, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 85845, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 85879, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 86274, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 86332, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 86350, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 86472, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 86473, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 86993, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.
+
+Error at index : 87056, error : Error: Can't subset columns that don't exist.
+x The column `results.formatted_address` doesn't exist.

@@ -1,0 +1,50 @@
+[1] "*********Step LM Results *****************"
+
+Call:
+lm(formula = price ~ house_size_cat + no_of_bed_cat + no_of_parking + 
+    distance_station + year, data = train_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-293359  -40601   -2514   42512  345754 
+
+Coefficients:
+                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)               60271488   32798053   1.838 0.068092 .  
+house_size_cat(100,200]      35745      29693   1.204 0.230556    
+house_size_cat(200,300]     159470      42321   3.768 0.000236 ***
+house_size_cat(300,400]     350192      55762   6.280 3.47e-09 ***
+house_size_cat(400,500]     484656      47116  10.286  < 2e-16 ***
+house_size_cat(500,600]     415599      37413  11.108  < 2e-16 ***
+house_size_cat(600,700]     570542      42077  13.559  < 2e-16 ***
+house_size_cat(700,800]     777468      51945  14.967  < 2e-16 ***
+house_size_cat(800,900]     685446      52596  13.032  < 2e-16 ***
+house_size_cat(900,1e+03]  1009175     106899   9.440  < 2e-16 ***
+no_of_bed_cat(1,2]          115669      19282   5.999 1.43e-08 ***
+no_of_bed_cat(2,3]          263793      35531   7.424 7.89e-12 ***
+no_of_bed_cat(3,4]          307778     113536   2.711 0.007494 ** 
+no_of_parking2               33861      18229   1.858 0.065200 .  
+no_of_parking3               13460      39660   0.339 0.734795    
+no_of_parking4             -137608      47002  -2.928 0.003947 ** 
+no_of_parking5             -264847      79228  -3.343 0.001047 ** 
+no_of_parking6               -7710      84536  -0.091 0.927449    
+distance_station<2km        -68478      18625  -3.677 0.000329 ***
+year                        -29648      16248  -1.825 0.070032 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 100700 on 150 degrees of freedom
+Multiple R-squared:  0.8981,	Adjusted R-squared:  0.8852 
+F-statistic: 69.56 on 19 and 150 DF,  p-value: < 2.2e-16
+
+[1] "*********Step LM ANOVA *****************"
+                Step Df     Deviance Resid. Df   Resid. Dev      AIC
+1                    NA           NA       169 1.492173e+13 4285.667
+2   + house_size_cat -9 1.214654e+13       160 2.775188e+12 4017.710
+3    + no_of_bed_cat -3 7.923872e+11       157 1.982801e+12 3966.555
+4    + no_of_parking -5 2.863225e+11       152 1.696478e+12 3950.042
+5 + distance_station -1 1.417060e+11       151 1.554772e+12 3937.214
+6             + year -1 3.376268e+10       150 1.521010e+12 3935.482
+[1] "RMSE: 90546.22"
+[1] "MAE: 67398.64"
+[1] "*********RMSE Results *****************"

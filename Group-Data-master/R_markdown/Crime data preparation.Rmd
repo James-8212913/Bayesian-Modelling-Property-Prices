@@ -1,0 +1,53 @@
+---
+title: "Crime data preparation"
+author: "Jun Chen"
+date: "07/05/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+## Crime data preparation
+
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+
+input raw data and crime type mapping
+
+```{r}
+crime_data <- read.csv("[Data] Crime_Data_by_postcode.csv")
+crime_type <- read.csv("[Mapping] Crime_Type.csv")
+```
+
+
+First, unselect columns (from column Jan.2010 to column Dec.2017) to extract dataset from 2018 to 2019.
+
+
+Then gather the non-variable columns (from column Jan.2018 to column Dec.2019) into a two-column key-value pair (month_year, number_of_case).
+
+
+Next, join with crime_type data with common variables (Offence.category, subcategory)
+
+
+Finally, group data and summaries by Postcode and Crime.Type to show the total number of crime cases over 2018 to 2019.
+
+
+```{r}
+total_crime_18_19 <- crime_data %>%
+  select(-(Jan.10:Dec.17)) %>%
+  gather(month_year, number_of_case, Jan.18:Dec.19, na.rm = TRUE) %>%
+  left_join(crime_type, c("Offence.category", "Subcategory")) %>%
+  select(Postcode, Crime.Type, Offence.category, Subcategory, month_year, number_of_case) %>%
+  group_by(Postcode, Crime.Type) %>%
+  summarise(Total.Crime = sum(number_of_case)) %>%
+  spread(Crime.Type, Total.Crime) %>%
+  arrange(Postcode)
+```

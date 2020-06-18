@@ -1,0 +1,43 @@
+[1] "*********Step LM Results *****************"
+
+Call:
+lm(formula = price ~ house_size_cat + no_of_bed_cat + type + 
+    year, data = train_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1317938  -292049   -36817   171199  2257298 
+
+Coefficients:
+                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)             -644547130  405570927  -1.589 0.118312    
+house_size_cat(100,200]     679865     299272   2.272 0.027439 *  
+house_size_cat(200,300]    1067692     351612   3.037 0.003795 ** 
+house_size_cat(300,400]     828011     478563   1.730 0.089762 .  
+house_size_cat(400,500]    1826696     448255   4.075 0.000164 ***
+house_size_cat(500,600]     795494     702689   1.132 0.263004    
+house_size_cat(600,700]    2886460     531771   5.428 1.67e-06 ***
+house_size_cat(700,800]     133609     818807   0.163 0.871038    
+no_of_bed_cat(2,4]          648895     323331   2.007 0.050182 .  
+no_of_bed_cat(4,6]         2660149    1003139   2.652 0.010698 *  
+typeDuplex                  721408     690746   1.044 0.301328    
+typeHouse                   873925     331518   2.636 0.011140 *  
+typeSemi-Detached           630672     813011   0.776 0.441566    
+year                        319851     200888   1.592 0.117646    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 695000 on 50 degrees of freedom
+Multiple R-squared:  0.7641,	Adjusted R-squared:  0.7027 
+F-statistic: 12.45 on 13 and 50 DF,  p-value: 1.676e-11
+
+[1] "*********Step LM ANOVA *****************"
+              Step Df     Deviance Resid. Df   Resid. Dev      AIC
+1                  NA           NA        63 1.023456e+14 1800.432
+2 + house_size_cat -7 6.727666e+13        56 3.506892e+13 1745.885
+3  + no_of_bed_cat -2 6.558260e+12        54 2.851066e+13 1736.635
+4           + type -3 3.138009e+12        51 2.537265e+13 1735.172
+5           + year -1 1.224345e+12        50 2.414830e+13 1734.007
+[1] "RMSE: 975719.84"
+[1] "MAE: 795222.31"
+[1] "*********RMSE Results *****************"

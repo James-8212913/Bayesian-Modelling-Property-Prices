@@ -1,0 +1,46 @@
+[1] "*********Step LM Results *****************"
+
+Call:
+lm(formula = price ~ no_of_bed_cat + house_size_cat + distance_station + 
+    no_of_parking, data = train_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-212361  -27832       0   22075  174567 
+
+Coefficients:
+                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                 670000      79343   8.444 2.44e-10 ***
+no_of_bed_cat(1,2]          156899      23896   6.566 8.50e-08 ***
+no_of_bed_cat(2,3]          295906      51908   5.701 1.35e-06 ***
+house_size_cat(200,300]      -2900     117219  -0.025  0.98039    
+house_size_cat(300,400]     201036      94919   2.118  0.04060 *  
+house_size_cat(400,500]     235500     112209   2.099  0.04236 *  
+house_size_cat(500,600]     152802      83135   1.838  0.07369 .  
+house_size_cat(600,700]     149943      85295   1.758  0.08660 .  
+house_size_cat(700,800]     164446      88614   1.856  0.07106 .  
+house_size_cat(800,900]     298042     102040   2.921  0.00578 ** 
+house_size_cat(900,1e+03]   307100     117219   2.620  0.01247 *  
+distance_station<2km         98088      29883   3.282  0.00218 ** 
+no_of_parking2              -13999      25317  -0.553  0.58346    
+no_of_parking3              -48984      42628  -1.149  0.25751    
+no_of_parking4              208059      85209   2.442  0.01925 *  
+no_of_parking6             -113999     115029  -0.991  0.32777    
+no_of_parking7              -80890      86854  -0.931  0.35741    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 79340 on 39 degrees of freedom
+Multiple R-squared:  0.8016,	Adjusted R-squared:  0.7202 
+F-statistic: 9.849 on 16 and 39 DF,  p-value: 3.558e-09
+
+[1] "*********Step LM ANOVA *****************"
+                Step Df     Deviance Resid. Df   Resid. Dev      AIC
+1                    NA           NA        55 1.237528e+12 1335.852
+2    + no_of_bed_cat -2 584890872167        53 6.526375e+11 1304.020
+3   + house_size_cat -8 269243075972        45 3.833944e+11 1290.231
+4 + distance_station -1  64972637133        44 3.184218e+11 1281.832
+5    + no_of_parking -5  72901886591        39 2.455199e+11 1277.272
+[1] "RMSE: 113744.36"
+[1] "MAE: 97661.00"
+[1] "*********RMSE Results *****************"

@@ -1,0 +1,37 @@
+[1] "*********Step LM Results *****************"
+
+Call:
+lm(formula = price ~ house_size_cat + no_of_bed_cat, data = train_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-377288 -118705  -14413   93969  381758 
+
+Coefficients:
+                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                 617000      81969   7.527 4.01e-11 ***
+house_size_cat(100,200]     106250     115922   0.917 0.361849    
+house_size_cat(200,300]     277000     109974   2.519 0.013562 *  
+house_size_cat(300,400]     284128      98733   2.878 0.005014 ** 
+house_size_cat(400,500]     422000     183289   2.302 0.023647 *  
+house_size_cat(500,600]     451242      86419   5.222 1.15e-06 ***
+house_size_cat(600,700]     473742      88410   5.358 6.53e-07 ***
+house_size_cat(700,800]     460289     101951   4.515 1.93e-05 ***
+house_size_cat(800,900]     444825     115922   3.837 0.000232 ***
+house_size_cat(900,1e+03]   624500     141975   4.399 3.01e-05 ***
+no_of_bed_cat(2,4]          176851      59049   2.995 0.003554 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 163900 on 89 degrees of freedom
+Multiple R-squared:  0.4515,	Adjusted R-squared:  0.3899 
+F-statistic: 7.326 on 10 and 89 DF,  p-value: 2.329e-08
+
+[1] "*********Step LM ANOVA *****************"
+              Step Df     Deviance Resid. Df   Resid. Dev      AIC
+1                  NA           NA        99 4.360900e+12 2451.853
+2 + house_size_cat -9 1.727871e+12        90 2.633030e+12 2419.399
+3  + no_of_bed_cat -1 2.410732e+11        89 2.391957e+12 2411.796
+[1] "RMSE: 130074.62"
+[1] "MAE: 109824.74"
+[1] "*********RMSE Results *****************"

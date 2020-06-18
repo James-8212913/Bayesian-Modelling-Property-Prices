@@ -1,0 +1,63 @@
+Crime Type,Offence category,Subcategory
+Violent Crime,Homicide,Murder *
+Violent Crime,Homicide,Attempted murder
+Violent Crime,Homicide,"Murder accessory, conspiracy"
+Violent Crime,Homicide,Manslaughter *
+Non-Violent Crime,Assault,Domestic violence related assault
+Non-Violent Crime,Assault,Non-domestic violence related assault
+Non-Violent Crime,Assault,Assault Police
+Non-Violent Crime,Sexual offences,Sexual assault
+Non-Violent Crime,Sexual offences,"Indecent assault, act of indecency and other sexual offences"
+Violent Crime,Abduction and kidnapping,Abduction and kidnapping
+Violent Crime,Robbery,Robbery without a weapon
+Violent Crime,Robbery,Robbery with a firearm
+Violent Crime,Robbery,Robbery with a weapon not a firearm
+Non-Violent Crime,Blackmail and extortion,Blackmail and extortion
+Non-Violent Crime,"Intimidation, stalking and harassment","Intimidation, stalking and harassment"
+Non-Violent Crime,Other offences against the person,Other offences against the person
+Non-Violent Crime,Theft,Break and enter dwelling
+Non-Violent Crime,Theft,Break and enter non-dwelling
+Non-Violent Crime,Theft,Receiving or handling stolen goods
+Non-Violent Crime,Theft,Motor vehicle theft
+Non-Violent Crime,Theft,Steal from motor vehicle
+Non-Violent Crime,Theft,Steal from retail store
+Non-Violent Crime,Theft,Steal from dwelling
+Non-Violent Crime,Theft,Steal from person
+Non-Violent Crime,Theft,Stock theft
+Non-Violent Crime,Theft,Fraud
+Non-Violent Crime,Theft,Other theft
+Violent Crime,Arson,Arson
+Violent Crime,Malicious damage to property,Malicious damage to property
+Drug offences,Drug offences,Possession and/or use of cocaine
+Drug offences,Drug offences,Possession and/or use of narcotics
+Drug offences,Drug offences,Possession and/or use of cannabis
+Drug offences,Drug offences,Possession and/or use of amphetamines
+Drug offences,Drug offences,Possession and/or use of ecstasy
+Drug offences,Drug offences,Possession and/or use of other drugs
+Drug offences,Drug offences,"Dealing, trafficking in cocaine"
+Drug offences,Drug offences,"Dealing, trafficking in narcotics"
+Drug offences,Drug offences,"Dealing, trafficking in cannabis"
+Drug offences,Drug offences,"Dealing, trafficking in amphetamines"
+Drug offences,Drug offences,"Dealing, trafficking in ecstasy"
+Drug offences,Drug offences,"Dealing, trafficking in other drugs"
+Drug offences,Drug offences,Cultivating cannabis
+Drug offences,Drug offences,Manufacture drug
+Drug offences,Drug offences,Importing drugs
+Drug offences,Drug offences,Other drug offences
+Non-Violent Crime,Prohibited and regulated weapons offences,Prohibited and regulated weapons offences
+Non-Violent Crime,Disorderly conduct,Trespass
+Non-Violent Crime,Disorderly conduct,Offensive conduct
+Non-Violent Crime,Disorderly conduct,Offensive language
+Non-Violent Crime,Disorderly conduct,Criminal intent
+Non-Violent Crime,Betting and gaming offences,Betting and gaming offences
+Non-Violent Crime,Liquor offences,Liquor offences
+Non-Violent Crime,Pornography offences,Pornography offences
+Non-Violent Crime,Prostitution offences,Prostitution offences
+Non-Violent Crime,Against justice procedures,Escape custody
+Non-Violent Crime,Against justice procedures,Breach Apprehended Violence Order
+Non-Violent Crime,Against justice procedures,Breach bail conditions
+Non-Violent Crime,Against justice procedures,Fail to appear
+Non-Violent Crime,Against justice procedures,Resist or hinder officer
+Non-Violent Crime,Against justice procedures,Other offences against justice procedures
+Non-Violent Crime,Transport regulatory offences,Transport regulatory offences
+Non-Violent Crime,Other offences,Other offences
