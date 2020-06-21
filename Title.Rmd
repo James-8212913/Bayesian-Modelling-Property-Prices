@@ -1,0 +1,33 @@
+--- 
+title: "A Bayesian Approach to Predicting Property Prices"
+author: "James Murray"
+date: "June 2020"
+output:
+  html_document:
+    df_print: paged
+  bookdown::html_document2:
+    table_css: no
+    fig_caption: yes
+documentclass: book
+bibliography:
+- export.bib
+- references.bib
+- packages.bib
+biblio-style: apalike
+link-citations: true
+github-repo: rstudio/bookdown-demo
+description: This is a project for DSI relating to the quantified self
+delete_merged_file: yes
+new_session: yes
+---
+
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages()))
+```
+
+
+
