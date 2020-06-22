@@ -6,6 +6,19 @@ library(car)
 library(leaps)
 library(AUC)
 library(relaimpo)
+library(psych)
+library(tidymodels)
+library(rsample)
+library(purrr)
+library(pls)
+library(yardstick)
+library(magrittr)
+library(stargazer)
+library(nnet)
+library(olsrr)
+library(dplyr)
+library(MASS)
+
 
 view(cleaned_merged_property_data_final)
 
@@ -36,9 +49,21 @@ df <- df[-which(df$price %in% priceoutliers),]
 
 boxplot(df$price)
 
-## Summary Stats for the Data Set
+## Summary Stats for the Data Set in a tibble
 
 summary(df)
+
+as_tibble(df)
+
+d_summary <- df%>%
+  psych::describe(quant = c(.25, .75))%>%
+  as_tibble(rownames = "rowname")%>%
+  drop_na()%>%
+  print() 
+
+view(d_summary)
+
+plot(d_summary)
 
 ## Plot distribution of prices
 
@@ -48,9 +73,24 @@ ggplot(df) +
 
 ## Split Data into random train and test sets
 
-dt = sort(sample(nrow(df), nrow(df)*.8))
+df1 <- select_(df,'price')
 
-train_data <-  df[dt,]
+colnames(df)
+
+df <- select_(df, 'price',
+         'distance_from_CBD',
+         'distance_from_closest_private_school',
+         'distance_from_closest_public_school',
+         'distance_from_closest_station',
+         'Violent.Crime',
+         'Non.Violent.Crime',
+         'Drug.offences')
+
+dt <-  sort(sample(nrow(df), nrow(df)*.8)) 
+
+glimpse(dt)
+
+train_data <- df[dt,]
 test_data <- df[-dt,]
 
 nrow(train_data)
@@ -58,37 +98,52 @@ nrow(test_data)
 
 ## GLM with no variable - price only
 
-train_data_lm <- lm(price ~ 1, train_data)
+colnames(train_data)
 
-colnames(df)
+price_lmfull <- lm(price ~ distance_from_CBD +
+                     distance_from_closest_private_school +
+                     distance_from_closest_public_school +
+                     distance_from_closest_station +
+                     Violent.Crime +
+                     Non.Violent.Crime +
+                     Drug.offences,
+                   data = train_data,
+                   na.action = na.omit)
 
-summary(train_data_lm)
+tidy(summary(price_lmfull))
+glance(price_lmfull)
+augment(price_lmfull)
 
-step_lm1 <- step(train_data_lm, 
-                direction = c('forward'), #choose forward, backward, both
-                trace = 1, #set to 0 to hide result from console 
-                scope = price ~ distance_from_CBD +
-                  no_of_bed +
-                  no_of_bath +
-                  no_of_parking +
-                  house_size +
-                  distance_from_closest_station +
-                  distance_from_closest_public_school +
-                  distance_from_closest_private_school,
-                  steps = 1000) #increase steps for better prediction
+summary(price_lmfull)
+summary(price_step)
+
+
+price_step <- stepAIC(price_lmfull, direction = "both")
+
+tidy(price_step)
+
+
+
+
+
+## Stepwise regression model 
+
+
 
 # Summary of Result
-summary(step_lm1) 
+
+tidy(step_lm1)
+
+glance(step_lm1)
+
 step_lm1$anova
 
-train_data1 <- select(train_data, c(distance_from_CBD, no_of_bath, no_of_parking, no_of_bed, house_size, distance_from_closest_station,distance_from_closest_public_school, distance_from_closest_private_school))
+varaibles <- select_(d_summary, "rowname")
 
-price_data1 <- select(train_data, c(price,distance_from_CBD, no_of_bath, no_of_parking, no_of_bed, house_size, distance_from_closest_station,distance_from_closest_public_school, distance_from_closest_private_school))
+varaibles
 
-view(train_data1)
-view(price_data1)
 
-all_vifs <- car::vif(step_lm)
+all_vifs <- car::vif(step_lm1)
 
 print(all_vifs)
 
@@ -161,6 +216,191 @@ plot_CI <- ggplot(data = depvar, aes( x= test_data$price, y = fit) +
                                         labs(x = "Actual", y = "Predicted"))
 
 plot_CI
+
+## Data Preparation 
+
+
+train_data1 <- df%>%
+  select_('postcode', 
+          'price', 
+          'no_of_bed',
+          'no_of_bath',
+          'no_of_parking',
+          'house_size',
+          'distance_from_CBD',
+          'median_taxable_income',
+          'mean_taxable_income',
+          'AQI',
+          'Drug.offences',
+          'Non.Violent.Crime',
+          'Violent.Crime',
+          'distance_from_closest_station',
+          'distance_from_closest_public_school',
+          'distance_from_closest_private_school',
+          'Nom.number',
+          'SAdvDisav_score',
+          'ER_score',
+          'EDUOCC_score',
+          'avg_temp')
+
+dt = sort(sample(nrow(train_data1), nrow(df)*.8))
+
+train_data <-  train_data1[dt,]
+test_data <- train_data1[-dt,]
+
+dim(train_data)
+
+nrow(train_data)
+colnames(train_data)
+
+nrow(test_data)
+colnames(test_data)
+
+## Create and run the linear model
+
+price_lmtrain <- lm(price ~., data = train_data)
+
+## Results for the model
+
+tidy(summary(price_lmtrain))
+
+summary(price_lmtrain)
+
+## Tidy Results for the model
+
+Train_Summary <- tidy(price_lmtrain)
+
+view (Train_Summary)
+
+Train_Glance <- glance(price_lmtrain)
+
+view(Train_Glance)
+
+## Test the model
+
+price_lmtest <- predict.lm(price_lmtrain, test_data, interval = 'prediction', se.fit = T)
+
+price_lmtest
+
+## Test model results
+
+cor(test_data$price, price_lmtest$fit[,1]) ## [1] 0.8438662
+
+Test_Summary <- tidy(summary(price_lmtest$fit[,1])) ##
+
+## Mean Absolute Error
+
+### Function Creation
+
+MAE <- function(actual, predicted){
+  mean(abs(actual - predicted))
+}
+
+### Results
+
+MAE(price_lmtest$fit[,1], test_data$price) ## [1] $159446.3 
+
+y_out_pricelm <- as.data.frame(cbind(test_data$price, price_lmtest$fit))
+upper_price <- y_out_pricelm$upr
+lower_price <- y_out_pricelm$lwr
+
+
+
+y_out_pricelm
+
+price_lmtest$fit
+test_data$price
+
+
+nrow(y_out_pricelm)
+
+
+Observed_Plot <- ggplot(data = y_out_pricelm, aes(x = test_data$price, y = price_lmtest$fit[,1])) +
+  geom_point() +
+  ggtitle("Regression Model for Prioperty Prices") +
+  labs(x = "Actual Prices", y = "Predicted Prices")
+
+Observed_Plot 
+  geom_errorbar(ymin = lower_price, ymax = upper_price)
+
+## MAPE Calculation 
+
+head(y_out_pricelm)
+
+as_tibble(y_out_pricelm)
+
+Price_Pred_Truth <- select_(y_out_pricelm,'V1','fit')
+
+head(Price_Pred_Truth) 
+
+as_tibble(Price_Pred_Truth)
+
+## Joining the metrics together - MAE, MAPE, R2, RMSE
+
+Comparison_of_Model_Metrics <- as_tibble(metrics(Price_Pred_Truth, V1, fit))
+
+mape <- mape(Price_Pred_Truth, 'V1', 'fit', na_rm = TRUE)
+
+Comparison_metrics <- full_join(Comparison_of_Model_Metrics, mape)
+
+Comparison_metrics
+
+## Precision
+
+### As factors
+
+glimpse(Price_Pred_Truth)
+
+precision(Price_Pred_Truth1$V1, Price_Pred_Truth1$fit)
+
+set.seed(12345)
+
+size <- 100
+times <- 10
+
+Priceprediction_resampled <- bind_rows(
+  replicate(
+    n = times,
+    expr = sample_n(Price_Pred_Truth, size, replace = TRUE),
+    simplify = FALSE
+  ),
+  .id = "resample"
+)
+head(Priceprediction_resampled)  
+
+## Mape Results averaging of the price and fit as a percentage
+
+metric_results <- Priceprediction_resampled %>%
+  group_by(resample) %>%
+  mape('V1', 'fit')
+
+view(metric_results)
+
+## Average MAPE Estimate
+metric_results %>%
+  summarise(avg_estimate = mean(.estimate)) ## 1         17.9
+
+## Predict Partial Residuals
+
+ggplot(lm(price ~ distance_from_CBD, data = test_data)) +
+  geom_point(aes(x = .fitted, y = .resid))
+
+(train_data$predicted <- predict(price_lmtrain))
+(train_data$residuals <- residuals(price_lmtrain))
+
+view(train_data)
+
+## AUC for the training model
+
+
+tidy(coef(price_lmtrain))
+
+test <- ols_step_all_possible(price_lmtrain)
+
+
+
+plot(test)
+
 
 
 

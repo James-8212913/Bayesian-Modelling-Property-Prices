@@ -1,7 +1,10 @@
 # Data Preparation and Modelling
 
+To answer determine likiehood of property price response around access to services and business districts the Data modelling was limited to distance from CBD and access to services (schools and train stations).  
 
 ## Data Preparation
+
+The Data set used for this modelling is the same Data that was used for the GLM. 
 
 
 ## Modelling

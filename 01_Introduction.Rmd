@@ -1,11 +1,46 @@
 # Introduction
 
+>
+>**All Models are wrong, but some are useful**
+>
+>*Box and Draper - 1987*
+>
+
 There will be more than 700 000 homes created in the greater Sydney Region between now and 2036 as part of the Greater [Sydney Commission's Strategic Plan](https://www.greater.sydney/metropolis-of-three-cities/liveability/housing-city/greater-housing-supply). The effects this will have on property prices is as yet unknown but must be measured carefully in an effort to preserve, or improve, the lending ratio's in a highly leveraged market place. The factors that affect property prices are many and varied, access to services and business districts is considered a principle aspect among these. 
 
-
 ---
-What is the likely probability that access to services and business districts will affect property prices and subsequently leverage ratios?   
+
+What is the probability that access to services and business districts will affect property prices?   
 
 --- 
+
+To date the group work has gathered a rich set of Data and these have been modelled to predict house prices in the Greater Sydney Region. The results for the model are in the table below...
+
+```{r}
+
+##Table results 
+
+```
+
+
+From these measures of the linear model that the group created we can see that it is still only possible to predict the house price to within $160 000. This is a considerable amount of money in real terms in a highly leveraged market place. The confidence interval for the property price based on the model is..... This is one of the metrics that will be used to assess the existing model against the newly generated Bayesian. 
+
+## Why use Bayesian?
+
+In order to answer this highlights from both frequentist and Bayesian methods are offered below.
+
+Frequentist statistical approaches are based on the following ideas(Bolstad, 2016):
+
+* They assumes that numerical characteristics of the population are fixed but unknown. 
+
+* Probabilities are always interpreted as long-run relative frequency
+
+* The performance of statistical procedures is considered over long-run infinite hypothetical repetitions
+
+On the other hand, Bayesian concepts offer a way to consistently update our beliefs about the parameters given the Data that actually occurred (Bolstad et al, 2016). The essence of this concept is the way the variables are considered. By allowing parameters to be considered as random variables it allows us to make probability statements about the variables themselves based on what we believe at that point in time and space - it allows us to allocate credibility across the possibilities associated within the observed system. Bayesian inference allows us to compute the exact relative credibilities of candidate parameter values, while also taking into account their prior probabilities (Kruschke, 2015). 
+
+Critically, the method of measuring the confidence intervals(CI) between the two approaches is the way this is set apart. CIs under the Frequentist approach are not interpretable in terms of post-data probabilities where as the Bayesian uncertainty interval is set following analysis of the data. This allows confidence intervals to move as the model learns from the Data - as new information comes to light then the model is updated with providing new uncertainty intervals.  
+
+#  
 
 
