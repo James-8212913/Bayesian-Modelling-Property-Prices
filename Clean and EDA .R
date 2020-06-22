@@ -6,6 +6,14 @@ library(car)
 library(leaps)
 library(AUC)
 library(relaimpo)
+library(psych)
+library(tidymodels)
+library(rsample)
+library(purrr)
+library(pls)
+library(yardstick)
+library(magrittr)
+
 
 view(cleaned_merged_property_data_final)
 
@@ -36,9 +44,18 @@ df <- df[-which(df$price %in% priceoutliers),]
 
 boxplot(df$price)
 
-## Summary Stats for the Data Set
+## Summary Stats for the Data Set in a tibble
 
 summary(df)
+
+d_summary <- df%>%
+  psych::describe(quant = c(.25, .75))%>%
+  as_tibble(rownames = "rowname")%>%
+  drop_na()%>%
+  print() 
+
+view(d_summary)
+
 
 ## Plot distribution of prices
 
@@ -78,17 +95,19 @@ step_lm1 <- step(train_data_lm,
                   steps = 1000) #increase steps for better prediction
 
 # Summary of Result
-summary(step_lm1) 
+
+tidy(step_lm1)
+
+glance(step_lm1)
+
 step_lm1$anova
 
-train_data1 <- select(train_data, c(distance_from_CBD, no_of_bath, no_of_parking, no_of_bed, house_size, distance_from_closest_station,distance_from_closest_public_school, distance_from_closest_private_school))
+varaibles <- select_(d_summary, "rowname")
 
-price_data1 <- select(train_data, c(price,distance_from_CBD, no_of_bath, no_of_parking, no_of_bed, house_size, distance_from_closest_station,distance_from_closest_public_school, distance_from_closest_private_school))
+varaibles
 
-view(train_data1)
-view(price_data1)
 
-all_vifs <- car::vif(step_lm)
+all_vifs <- car::vif(step_lm1)
 
 print(all_vifs)
 
@@ -162,5 +181,148 @@ plot_CI <- ggplot(data = depvar, aes( x= test_data$price, y = fit) +
 
 plot_CI
 
+## Data Preparation 
 
 
+train_data1 <- df%>%
+  select_('postcode', 
+          'price', 
+          'no_of_bed',
+          'no_of_bath',
+          'no_of_parking',
+          'house_size',
+          'distance_from_CBD',
+          'median_taxable_income',
+          'mean_taxable_income',
+          'AQI',
+          'Drug.offences',
+          'Non.Violent.Crime',
+          'Violent.Crime',
+          'distance_from_closest_station',
+          'distance_from_closest_public_school',
+          'distance_from_closest_private_school',
+          'Nom.number',
+          'SAdvDisav_score',
+          'ER_score',
+          'EDUOCC_score',
+          'avg_temp')
+
+dt = sort(sample(nrow(train_data1), nrow(df)*.8))
+
+train_data <-  train_data1[dt,]
+test_data <- train_data1[-dt,]
+
+dim(train_data)
+
+nrow(train_data)
+colnames(train_data)
+
+nrow(test_data)
+colnames(test_data)
+
+## Create and run the linear model
+
+price_lmtrain <- lm(price ~., data = train_data)
+
+## Results for the model
+
+tidy(summary(price_lmtrain))
+
+## Tidy Results for the model
+
+Train_Summary <- tidy(price_lmtrain)
+
+Train_Glance <- glance(price_lmtrain)
+
+## Test the model
+
+price_lmtest <- predict.lm(price_lmtrain, test_data, interval = 'prediction', se.fit = T)
+
+price_lmtest
+
+## Test model results
+
+cor(test_data$price, price_lmtest$fit[,1]) ## [1] 0.8438662
+
+Test_Summary <- tidy(summary(price_lmtest$fit[,1])) ##
+
+## Mean Absolute Error
+
+### Function Creation
+
+MAE <- function(actual, predicted){
+  mean(abs(actual - predicted))
+}
+
+### Results
+
+MAE(price_lmtest$fit[,1], test_data$price) ## [1] $159446.3 
+
+y_out_pricelm <- as.data.frame(cbind(test_data$price, price_lmtest$fit))
+upper_price <- y_out_pricelm$upr
+lower_price <- y_out_pricelm$lwr
+
+y_out_pricelm
+
+price_lmtest$fit
+test_data$price
+
+
+nrow(y_out_pricelm)
+
+
+Observed_Plot <- ggplot(data = y_out_pricelm, aes(x = test_data$price, y = price_lmtest$fit[,1])) +
+  geom_point() +
+  ggtitle("Regression Model for Prioperty Prices") +
+  labs(x = "Actual Prices", y = "Predicted Prices")
+
+Observed_Plot 
+  geom_errorbar(ymin = lower_price, ymax = upper_price)
+
+## MAPE Calculation 
+
+head(y_out_pricelm)
+
+as_tibble(y_out_pricelm)
+
+Price_Pred_Truth <- select_(y_out_pricelm,'V1','fit')
+
+head(Price_Pred_Truth) 
+
+as_tibble(Price_Pred_Truth)
+
+## Joining the metrics together - MAE, MAPE, R2, RMSE
+
+Comparison_of_Model_Metrics <- as_tibble(metrics(Price_Pred_Truth, V1, fit))
+
+mape <- mape(Price_Pred_Truth, 'V1', 'fit', na_rm = TRUE)
+
+Comparison_metrics <- full_join(Comparison_of_Model_Metrics, mape)
+
+Comparison_metrics
+
+precision(Price_Pred_Truth, 'V1', 'fit')
+
+set.seed(12345)
+
+size <- 100
+times <- 10
+
+Priceprediction_resampled <- bind_rows(
+  replicate(
+    n = times,
+    expr = sample_n(Price_Pred_Truth, size, replace = TRUE),
+    simplify = FALSE
+  ),
+  .id = "resample"
+)
+head(Priceprediction_resampled)  
+
+metric_results <- Priceprediction_resampled %>%
+  group_by(resample) %>%
+  mape('V1', 'fit')
+
+head(metric_results)
+
+metric_results %>%
+  summarise(avg_estimate = mean(.estimate))
