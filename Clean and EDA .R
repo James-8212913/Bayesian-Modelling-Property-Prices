@@ -13,14 +13,12 @@ library(purrr)
 library(pls)
 library(yardstick)
 library(magrittr)
-<<<<<<< HEAD
 library(stargazer)
 library(nnet)
 library(olsrr)
 library(dplyr)
 library(MASS)
-=======
->>>>>>> 15feacfe95b3b6d89c75b583651c47fb6085c37b
+library(psych)
 
 
 view(cleaned_merged_property_data_final)
@@ -39,6 +37,11 @@ df <- cleaned_merged_property_data_final%>%
 
 glimpse(df)
 
+df11 <- df %>%
+  group_by(postcode)
+
+
+
 df$no_of_bath = as.integer(df$no_of_bath)
 df$no_of_parking = as.integer(df$no_of_parking)
 
@@ -56,23 +59,13 @@ boxplot(df$price)
 
 summary(df)
 
-<<<<<<< HEAD
 as_tibble(df)
 
-=======
->>>>>>> 15feacfe95b3b6d89c75b583651c47fb6085c37b
 d_summary <- df%>%
   psych::describe(quant = c(.25, .75))%>%
   as_tibble(rownames = "rowname")%>%
   drop_na()%>%
   print() 
-
-view(d_summary)
-
-<<<<<<< HEAD
-plot(d_summary)
-=======
->>>>>>> 15feacfe95b3b6d89c75b583651c47fb6085c37b
 
 ## Plot distribution of prices
 
@@ -126,18 +119,25 @@ augment(price_lmfull)
 summary(price_lmfull)
 summary(price_step)
 
+## Stepwise regression model 
 
 price_step <- stepAIC(price_lmfull, direction = "both")
 
 tidy(price_step)
+summary(price_step)
+
+as_tibble(describe(train_data))
+
+hist(train_data$price, probability = TRUE)
+
+Drug.offences <- rnorm(train_data$Drug.offences)
+dens <- density(Drug.offences)
+sum(dens$y)*diff(dens$x[1:2])
+
+hist(Drug.offences, probability = TRUE)
 
 
-
-
-
-## Stepwise regression model 
-
-
+plot(density(train_data$price, kernel = "gaussian"))
 
 # Summary of Result
 
@@ -273,26 +273,22 @@ price_lmtrain <- lm(price ~., data = train_data)
 
 tidy(summary(price_lmtrain))
 
-<<<<<<< HEAD
+
 summary(price_lmtrain)
 
-=======
->>>>>>> 15feacfe95b3b6d89c75b583651c47fb6085c37b
 ## Tidy Results for the model
 
 Train_Summary <- tidy(price_lmtrain)
 
-<<<<<<< HEAD
 view (Train_Summary)
 
 Train_Glance <- glance(price_lmtrain)
 
 view(Train_Glance)
 
-=======
+
 Train_Glance <- glance(price_lmtrain)
 
->>>>>>> 15feacfe95b3b6d89c75b583651c47fb6085c37b
 ## Test the model
 
 price_lmtest <- predict.lm(price_lmtrain, test_data, interval = 'prediction', se.fit = T)
@@ -321,11 +317,7 @@ y_out_pricelm <- as.data.frame(cbind(test_data$price, price_lmtest$fit))
 upper_price <- y_out_pricelm$upr
 lower_price <- y_out_pricelm$lwr
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 15feacfe95b3b6d89c75b583651c47fb6085c37b
 y_out_pricelm
 
 price_lmtest$fit
@@ -365,7 +357,7 @@ Comparison_metrics <- full_join(Comparison_of_Model_Metrics, mape)
 
 Comparison_metrics
 
-<<<<<<< HEAD
+
 ## Precision
 
 ### As factors
@@ -373,9 +365,8 @@ Comparison_metrics
 glimpse(Price_Pred_Truth)
 
 precision(Price_Pred_Truth1$V1, Price_Pred_Truth1$fit)
-=======
+
 precision(Price_Pred_Truth, 'V1', 'fit')
->>>>>>> 15feacfe95b3b6d89c75b583651c47fb6085c37b
 
 set.seed(12345)
 
@@ -427,11 +418,11 @@ test <- ols_step_all_possible(price_lmtrain)
 plot(test)
 
 
-=======
+
 metric_results <- Priceprediction_resampled %>%
   group_by(resample) %>%
   mape('V1', 'fit')
->>>>>>> 15feacfe95b3b6d89c75b583651c47fb6085c37b
+
 
 head(metric_results)
 

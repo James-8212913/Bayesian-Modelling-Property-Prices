@@ -19,6 +19,11 @@ library(olsrr)
 library(dplyr)
 library(MASS)
 
+write_csv(df, "Bayes Model Data.csv")
+write_csv(train_data, "Model Train Data.csv")
+write_csv(test_data,"Model Test Data.csv")
+
+df <- "Bayes Model Data"
 
 view(cleaned_merged_property_data_final)
 
@@ -158,3 +163,38 @@ ggplot(df11, aes(pred, abs(resid))) +
 
 ggplot(df11, aes(resid)) +
   geom_histogram()
+
+## ANOVA for the model
+
+price_step$anova
+
+## tepwise Model Path 
+##Analysis of Deviance Table
+
+##Initial Model:
+  price ~ distance_from_CBD + distance_from_closest_private_school + 
+  distance_from_closest_public_school + distance_from_closest_station + 
+  Violent.Crime + Non.Violent.Crime + Drug.offences
+
+##Final Model:
+  price ~ distance_from_CBD + distance_from_closest_private_school + 
+  distance_from_closest_public_school + distance_from_closest_station + 
+  Violent.Crime + Drug.offences
+
+
+##Step Df     Deviance Resid. Df   Resid. Dev      AIC
+##1                                         38385 4.023198e+15 974246.9
+##2 - Non.Violent.Crime  1 117639469172     38386 4.023316e+15 974246.1
+  
+
+## Plot Residuals v Fitted Results
+  
+  
+  par(mfrow = c(2,2))
+  
+  plot(price_step)
+
+## Relative importance of the variables in the model
+  
+calc.relimp(price_step, type = c("lmg", "last", "first", "pratt"), rela = TRUE)  
+  

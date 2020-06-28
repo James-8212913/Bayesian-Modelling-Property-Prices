@@ -3,10 +3,10 @@
 >
 >**All Models are wrong, but some are useful**
 >
->*Box and Draper - 1987*
+>*George Box - 1976*
 >
 
-There will be more than 700 000 homes created in the greater Sydney Region between now and 2036 as part of the Greater [Sydney Commission's Strategic Plan](https://www.greater.sydney/metropolis-of-three-cities/liveability/housing-city/greater-housing-supply). The effects this will have on property prices is as yet unknown but must be measured carefully in an effort to preserve, or improve, the lending ratio's in a highly leveraged market place. The factors that affect property prices are many and varied, access to services and business districts is considered a principle aspect among these. 
+There will be more than 700 000 homes created in the greater Sydney Region between now and 2036 as part of the Greater [Sydney Commission's Strategic Plan](https://www.greater.sydney/metropolis-of-three-cities/liveability/housing-city/greater-housing-supply). The effects this will have on property prices is as yet unknown but must be measured carefully in an effort to preserve, or improve, the lending ratio's in a highly leveraged market place. The factors that affect property prices are many and varied. Based on developed linear models the results  offered that access to services and business districts is considered a principle aspect among the influences and this should be a key consideration when developing the strategic plan for the Greater Sydney Region. As such, to further refine this idea the following question will be answered 
 
 ---
 
@@ -14,11 +14,49 @@ What is the probability that access to services and business districts will affe
 
 --- 
 
-To date the group work has gathered a rich set of Data and these have been modelled to predict house prices in the Greater Sydney Region. The results for the model are in the table below...
 
-```{r}
+```{r Package Load, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 
-##Table results 
+library(tidyverse)
+library(lubridate)
+library(magrittr)
+library(caret)
+library(car)
+library(leaps)
+library(AUC)
+library(relaimpo)
+library(psych)
+library(tidymodels)
+library(rsample)
+library(purrr)
+library(pls)
+library(yardstick)
+library(magrittr)
+library(stargazer)
+library(nnet)
+library(olsrr)
+library(dplyr)
+library(MASS)
+library(psych)
+library(rstan)
+library(rstanarm)
+library(shinystan)
+library(tidyverse)
+library(bayesplot)
+library(BayesianTools)
+theme_set(bayesplot::theme_default())
+library(ggplot2)
+library(brm)
+library(tidymodels)
+library(tidybayes)
+library(kableExtra)
+library(magrittr)
+library(lmtest)
+library(tidymodels)
+library(broom.mixed)
+library(glmnet)
+library(forcats)
+library(moderndive)
 
 ```
 
@@ -37,10 +75,23 @@ Frequentist statistical approaches are based on the following ideas(Bolstad, 201
 
 * The performance of statistical procedures is considered over long-run infinite hypothetical repetitions
 
-On the other hand, Bayesian concepts offer a way to consistently update our beliefs about the parameters given the Data that actually occurred (Bolstad et al, 2016). The essence of this concept is the way the variables are considered. By allowing parameters to be considered as random variables it allows us to make probability statements about the variables themselves based on what we believe at that point in time and space - it allows us to allocate credibility across the possibilities associated within the observed system. Bayesian inference allows us to compute the exact relative credibilities of candidate parameter values, while also taking into account their prior probabilities (Kruschke, 2015). 
+On the other hand, Bayesian concepts offer a way to consistently update our beliefs about the parameters given the Data that actually occurred (Bolstad et al, 2016). The essence of this concept is the way the variables are considered. By allowing parameters to be considered as random variables it allows probability statements to be made about the variables themselves based on what the belief is at that point in time and space - it allows us to allocate credibility across the possibilities associated within the observed system. Bayesian inference allows us to compute the exact relative credibilities of candidate parameter values, while also taking into account their prior probabilities (Kruschke, 2015). In formulat terms we can write Bayes Theorm as:
+
+\(P(A|B)=\frac{P(B|A)*P(A)}{P(B)}\qquad\) which means Posterior = \(\frac{\mbox{Likelihood} * \mbox{Prior}}{\mbox{Marginal}}\)
+
+This can be rewritten by:
+
+\(P(\theta|D)=\frac{P(D|\theta)*P(\theta)}{P(D)}\qquad\) 
+
+In the theorm above the weighting of the posterior against the prior changes as the amount of Data obtained increases when compared with the number of variables being considered. This will be apparent in the model generated when considering property prices momentarily. 
+
+
+
 
 Critically, the method of measuring the confidence intervals(CI) between the two approaches is the way this is set apart. CIs under the Frequentist approach are not interpretable in terms of post-data probabilities where as the Bayesian uncertainty interval is set following analysis of the data. This allows confidence intervals to move as the model learns from the Data - as new information comes to light then the model is updated with providing new uncertainty intervals.  
 
 #  
+
+In the simplest case a GLM for a continuous outcome is simply a linear model and the likelihood for one observation is a conditionally normal PDF $$\frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2} \left(\frac{y - \mu}{\sigma}\right)^2},$$ where $\mu = \alpha + \mathbf{x}^\top \boldsymbol{\beta}$ is a linear predictor and $\sigma$ is the standard deviation of the error in predicting the outcome, $y$.
 
 

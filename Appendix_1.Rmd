@@ -1,0 +1,11 @@
+
+# Appendix 1 {-}
+
+Key Definitions Used (Gelman et al)
+
+Sensitivity Analysis: how much do posterior inferences change when other reasonable probability models are used in place of the present model? Things that can change in the model to change the sensitivity:
+    * Prior Specification
+    * Sampling Distribution
+    * Predictor Variables
+    
+External Validation: using the model to make predictions about future data, and then collecting those data and comparing to their predictions.

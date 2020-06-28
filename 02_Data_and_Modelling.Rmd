@@ -1,15 +1,92 @@
 # Data Preparation and Modelling
 
-To answer determine likiehood of property price response around access to services and business districts the Data modelling was limited to distance from CBD and access to services (schools and train stations).  
+To answer determine likelihood of property price response around access to services and business districts the Data modelling was limited to distance from CBD and access to services (schools and train stations).
+
+The summary statistics and results for the adjusted linear model are at [Annex 1](Annex 1.Rmd)
 
 ## Data Preparation
 
-The Data set used for this modelling is the same Data that was used for the GLM. 
-
+The Data set used for this modelling is the same Data that was used for the GLM with outliers removed. This offered a Data set of mode than 47 000 observations. This was further broken into a training and testing Data set with a ratio of 80/20.
 
 ## Modelling
 
+The model used was a Bayesian Generalized Linear model using Markov Chain Monte Carlo to develop the inference. The method for modelling and model selection was to incorporate the different levels of priors as part of the model selection process then assess the model . Three different kinds of priors were used to select the model:
+
+* Flat Priors 
+* Weakly Informative Priors: and
+* Informative Priors
+
+The selection and details around these priors was taken from the initial linear regression modelling completed. These results can be found at [Annex 1](Annex 1). 
+
+Firstly we will address the Flat Priors. The default priors in rstanarm are designed to be *weakly informative*.  This means that the priors have to be set to **NULL**. The   
+
+```{r Flat Prior, message=TRUE, warning=TRUE, include=FALSE}
+
+```
+
+The *Flat Priors* model results are below.
+
+
+```{r}
+
+```
+
+
+
+What aspects of reality are not captured by the model?
+
+Sensitivity Analysis is: how much to posterior inferences change when other reasonable probability models are used in place of the present model.
+
+and model improvement, things that can be altered to change the sensitivity of the model:
+- 
+- 
+
+Bayesian models with proper priors are generative models as such we need to check the priors used in the model. This is done by assessing the priors based on the marginal distribution of the data - this reflects the interplay between the prior distribution on the parameters and the likelihood (Gelman 2017). 
+
 
 ## Model Selection
+
+
+
+
+### Convergence
+
+```{r}
+
+```
+
+
+The convergence for the models was all acceptable as can be seen in the plots above. This is also reflected in the Rhat number in the results below with them all being 1.0.
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+
+
+### Methods for Checking the model
+
+#### External Validation
+
+
+
+#### Posterior Predictive Checking
+
+
+#### Pointwise plots 
+
+LOO cross-validation predictive distribution 
+
+```{r Pareto Smoothed Importance Sampling, echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+
+```
+
+
+LOO Log-predictive density values to find observations that are difficult to predict (Gelfand et al 1992). These plots were completed for each of the models above. 
+
 
 

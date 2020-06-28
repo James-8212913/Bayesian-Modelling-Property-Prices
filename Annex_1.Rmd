@@ -1,0 +1,207 @@
+
+```{r Packages, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+library(tidyverse)
+library(lubridate)
+library(magrittr)
+library(caret)
+library(car)
+library(leaps)
+library(AUC)
+library(relaimpo)
+library(psych)
+library(tidymodels)
+library(rsample)
+library(purrr)
+library(pls)
+library(yardstick)
+library(magrittr)
+library(stargazer)
+library(nnet)
+library(olsrr)
+library(dplyr)
+library(MASS)
+library(psych)
+library(rstan)
+library(rstanarm)
+library(shinystan)
+library(tidyverse)
+library(bayesplot)
+library(BayesianTools)
+theme_set(bayesplot::theme_default())
+library(ggplot2)
+library(brm)
+library(tidymodels)
+library(tidybayes)
+library(kableExtra)
+library(magrittr)
+library(lmtest)
+library(tidymodels)
+library(broom.mixed)
+library(glmnet)
+library(forcats)
+library(moderndive)
+```
+
+
+```{r Code Overview, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+
+propertypricesplit <- initial_split(df, prop = .8)
+
+glimpse(training(propertypricesplit)) ## Training
+
+train_data <- training(propertypricesplit) %>%
+  select_('price',
+          'distance_from_CBD',
+          'distance_from_closest_station',
+          'distance_from_closest_public_school',
+          'distance_from_closest_private_school')
+
+glimpse(train_data)
+
+test_data <- testing(propertypricesplit) %>%
+  select_('price',
+          'distance_from_CBD',
+          'distance_from_closest_station',
+          'distance_from_closest_public_school',
+          'distance_from_closest_private_school')
+
+glimpse(test_data)
+
+## grouped by post codes as required
+
+## group_by(postcode)
+
+## Build a Linear Model
+
+priceglm_mod <- 
+linear_reg() %>%
+  set_engine("lm")
+
+## Train the Data
+
+priceglm_fit <- 
+  priceglm_mod %>%
+  fit(price ~ ., 
+      train_data)%>%
+  step_center(all_predictors()) %>%
+  step_scale(all_predictors())
+
+## Predict the Values
+  
+results_train <- priceglm_fit %>%
+  predict(new_data = train_data) %>%
+  mutate(
+    truth = train_data$price,
+    model = "lm"
+  )
+
+results_train %>%
+  group_by(model) %>%
+  rmse(truth = truth, estimate = .pred)
+
+
+glimpse(results_train)
+  
+results_test <- priceglm_fit %>%
+  predict(new_data = test_data) %>%
+  mutate(
+    truth = test_data$price,
+    model = "lm"
+  )
+
+results_test %>% 
+  group_by(model) %>%
+  rmse(truth = truth, estimate = .pred)
+
+## R Squqred, RMSE and MAE results
+
+priceglm_fit %>%
+  predict(test_data) %>%
+  bind_cols(test_data) %>%
+  metrics(truth = price, estimate = .pred)
+  
+
+
+tidy(priceglm_fit)
+  
+predict(priceglm_fit, test_data)
+
+priceglm_fit %>%
+  predict(test_data) %>%
+  bind_cols(test_data) %>%
+  glimpse()
+
+tidy(priceglm_fit)
+
+
+## Graph the results
+
+results_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(truth, .pred)) +
+  geom_abline(lty = 2, colour = "gray80", size = 1.5) +
+  geom_point(alpha = .1) +
+  facet_wrap(~train) +
+  labs(
+    title = "GLM Comparison between the Training and Testing Data",
+    x = "Actual Prices",
+    y = "Predicted Prices",
+    colour = "Type of Model")
+
+
+```
+
+
+
+# Annex 1 {-} 
+
+The results from the adjusted GLM from the original work is below. 
+
+```{r Basic GLM, echo=FALSE, message=FALSE, warning=FALSE}
+
+tble1 <- priceglm_fit %>%
+  predict(test_data) %>%
+  bind_cols(test_data) %>%
+  metrics(truth = price, estimate = .pred)
+
+tble2 <- priceglm_fit %>%
+  predict(test_data) %>%
+  bind_cols(test_data) %>%
+  metrics(truth = price, estimate = .pred)
+
+kable(tble1)
+
+kable(tble2)
+
+kable(tidy(priceglm_fit))
+
+
+
+```
+
+
+A Graph of comparison between the testing data and the training data is below.
+
+```{r Step LM , echo=FALSE, message=FALSE, warning=FALSE}
+
+results_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(truth, .pred)) +
+  geom_abline(lty = 2, colour = "gray80", size = 1.5) +
+  geom_point(alpha = .1) +
+  facet_wrap(~train) +
+  labs(
+    title = "GLM Comparison between the Training and Testing Data",
+    x = "Actual Prices",
+    y = "Predicted Prices",
+    colour = "Type of Model")
+
+```
+
+

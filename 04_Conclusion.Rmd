@@ -2,5 +2,7 @@
 
 ## Are the results reliable?
 
+This model has enabled an explanation in a very complex scenario. The ability to refer to the likelihood of price fluctuations as a product of distnace from services is something that we were not able to do using the frequentist methods. 
+
 
 ## Can the model be refined and how?
