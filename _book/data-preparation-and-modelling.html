@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Data Preparation and Modelling | Baysian Linear Models in the Property Markets</title>
+  <meta name="description" content="This is a Bayesian Model investigation into property prices in the Sydney Region" />
+  <meta name="generator" content="bookdown 0.19.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Data Preparation and Modelling | Baysian Linear Models in the Property Markets" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a Bayesian Model investigation into property prices in the Sydney Region" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Data Preparation and Modelling | Baysian Linear Models in the Property Markets" />
+  
+  <meta name="twitter:description" content="This is a Bayesian Model investigation into property prices in the Sydney Region" />
+  
+
+<meta name="author" content="James Murray" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="findings-and-reflection.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-use-bayesian"><i class="fa fa-check"></i><b>1.1</b> Why use Bayesian?</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#frequentists"><i class="fa fa-check"></i>Frequentists</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#baysian"><i class="fa fa-check"></i>Baysian</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-preparation-and-modelling.html"><a href="data-preparation-and-modelling.html"><i class="fa fa-check"></i><b>2</b> Data Preparation and Modelling</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-preparation-and-modelling.html"><a href="data-preparation-and-modelling.html#data-preparation"><i class="fa fa-check"></i><b>2.1</b> Data Preparation</a></li>
+<li class="chapter" data-level="2.2" data-path="data-preparation-and-modelling.html"><a href="data-preparation-and-modelling.html#modelling"><i class="fa fa-check"></i><b>2.2</b> Modelling</a></li>
+<li class="chapter" data-level="2.3" data-path="data-preparation-and-modelling.html"><a href="data-preparation-and-modelling.html#model-selection"><i class="fa fa-check"></i><b>2.3</b> Model Selection</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="findings-and-reflection.html"><a href="findings-and-reflection.html"><i class="fa fa-check"></i><b>3</b> Findings and Reflection</a><ul>
+<li class="chapter" data-level="3.1" data-path="findings-and-reflection.html"><a href="findings-and-reflection.html#the-bayesian-glm"><i class="fa fa-check"></i><b>3.1</b> The Bayesian GLM</a></li>
+<li class="chapter" data-level="3.2" data-path="findings-and-reflection.html"><a href="findings-and-reflection.html#the-glm-compared-with-the-bayesian-model"><i class="fa fa-check"></i><b>3.2</b> The GLM compared with the Bayesian Model</a></li>
+<li class="chapter" data-level="3.3" data-path="findings-and-reflection.html"><a href="findings-and-reflection.html#the-postcode-specific-model"><i class="fa fa-check"></i><b>3.3</b> The Postcode specific model</a></li>
+<li class="chapter" data-level="3.4" data-path="findings-and-reflection.html"><a href="findings-and-reflection.html#reflections"><i class="fa fa-check"></i><b>3.4</b> Reflections</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>4</b> Conclusions</a><ul>
+<li class="chapter" data-level="4.1" data-path="conclusions.html"><a href="conclusions.html#are-the-results-reliable"><i class="fa fa-check"></i><b>4.1</b> Are the results reliable?</a></li>
+<li class="chapter" data-level="4.2" data-path="conclusions.html"><a href="conclusions.html#can-the-model-be-refined-and-how"><i class="fa fa-check"></i><b>4.2</b> Can the model be refined and how?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="annex-1.html"><a href="annex-1.html"><i class="fa fa-check"></i>Annex 1</a></li>
+<li class="chapter" data-level="" data-path="biblography.html"><a href="biblography.html"><i class="fa fa-check"></i>Biblography</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Baysian Linear Models in the Property Markets</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-preparation-and-modelling" class="section level1">
+<h1><span class="header-section-number">2</span> Data Preparation and Modelling</h1>
+<p>To determine likelihood of property price response around access to services and business districts the Data modelling was limited to distance from CBD and access to services (schools and train stations). The summary statistics and results for the adjusted linear model are at <a href="Annex%201">Annex 1</a></p>
+<div id="data-preparation" class="section level2">
+<h2><span class="header-section-number">2.1</span> Data Preparation</h2>
+<p>The Data set used for this modelling is the same Data that was used for the original linear model with outliers removed. This offered a Data set of more than 47 000 observations. This was further broken into a training and testing Data set with a ratio of 80/20.</p>
+</div>
+<div id="modelling" class="section level2">
+<h2><span class="header-section-number">2.2</span> Modelling</h2>
+<p>The model used was a Bayesian Generalized Linear model using Markov Chain Monte Carlo (MCMC) to develop the inference. The method for modelling and model selection was to incorporate the different levels of priors as part of the model selection process then assess the model. Three different kinds of priors were used to select the model:</p>
+<ul>
+<li>Flat Priors</li>
+<li>Weakly Informative Priors, and</li>
+<li>Informative Priors</li>
+</ul>
+<p>The selection and details around these priors was taken from the initial linear regression modelling completed. These results can be found at <a href="#Annex%201">Annex 1</a>.</p>
+<p>Firstly we will address the Flat Priors. The default priors in rstanarm are designed to be <em>weakly informative</em>. This means that the priors have to be set to <strong>NULL</strong> in rstanarm to get flat priors. It is seldom useful to use flat priors unless there is a requirement to refer to the parameterization-invariant <a href="https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/lectures/lecture7.pdf">Jefferys prior</a>.</p>
+<p>The <em>Flat Priors</em> model results are below.</p>
+<pre><code>## 
+## Model Info:
+##  function:     stan_glm
+##  family:       gaussian [identity]
+##  formula:      price ~ distance_from_CBD + distance_from_closest_private_school + 
+##     distance_from_closest_station + distance_from_closest_public_school
+##  algorithm:    sampling
+##  sample:       4000 (posterior sample size)
+##  priors:       see help(&#39;prior_summary&#39;)
+##  observations: 38394
+##  predictors:   5
+## 
+## Estimates:
+##                                        mean      sd        10%       50%    
+## (Intercept)                          1227592.4    3803.1 1222823.4 1227640.6
+## distance_from_CBD                      -9839.0      81.1   -9939.7   -9839.8
+## distance_from_closest_private_school   -5671.3    1631.4   -7769.1   -5684.0
+## distance_from_closest_station          16542.3     638.4   15710.1   16556.1
+## distance_from_closest_public_school    58871.0    3869.9   53866.3   58839.3
+## sigma                                 340969.6    1215.6  339377.4  340978.6
+##                                        90%    
+## (Intercept)                          1232436.8
+## distance_from_CBD                      -9735.0
+## distance_from_closest_private_school   -3548.8
+## distance_from_closest_station          17342.9
+## distance_from_closest_public_school    63807.6
+## sigma                                 342539.3
+## 
+## Fit Diagnostics:
+##            mean     sd       10%      50%      90%   
+## mean_PPD 939676.3   2475.2 936512.7 939652.5 942855.1
+## 
+## The mean_ppd is the sample average posterior predictive distribution of the outcome variable (for details see help(&#39;summary.stanreg&#39;)).
+## 
+## MCMC diagnostics
+##                                      mcse Rhat n_eff
+## (Intercept)                          51.9  1.0 5360 
+## distance_from_CBD                     1.3  1.0 4202 
+## distance_from_closest_private_school 28.7  1.0 3234 
+## distance_from_closest_station         9.8  1.0 4256 
+## distance_from_closest_public_school  60.9  1.0 4041 
+## sigma                                13.8  1.0 7738 
+## mean_PPD                             38.7  1.0 4092 
+## log-posterior                         0.0  1.0 1771 
+## 
+## For each parameter, mcse is Monte Carlo standard error, n_eff is a crude measure of effective sample size, and Rhat is the potential scale reduction factor on split chains (at convergence Rhat=1).</code></pre>
+<pre><code>##                                              5%        95%
+## (Intercept)                          1221484.49 1233769.80
+## distance_from_CBD                      -9970.64   -9704.66
+## distance_from_closest_private_school   -8351.27   -2986.75
+## distance_from_closest_station          15465.43   17575.46
+## distance_from_closest_public_school    52477.29   65170.01
+## sigma                                 338928.34  342948.57</code></pre>
+<hr />
+<p>The efficacy of the model is visually represented in the charts below.</p>
+<p><img src="_main_files/figure-html/Weak%20Priors%20Plots-1.png" width="672" /><img src="_main_files/figure-html/Weak%20Priors%20Plots-2.png" width="672" /><img src="_main_files/figure-html/Weak%20Priors%20Plots-3.png" width="672" /><img src="_main_files/figure-html/Weak%20Priors%20Plots-4.png" width="672" /><img src="_main_files/figure-html/Weak%20Priors%20Plots-5.png" width="672" /><img src="_main_files/figure-html/Weak%20Priors%20Plots-6.png" width="672" /><img src="_main_files/figure-html/Weak%20Priors%20Plots-7.png" width="672" /></p>
+<p>The visual representations above represent the Linear Model with flat priors. This was done for all three models, flat, weak and informative priors and importantly all models converged and had R-hat values of 1 or less across all predictors. convergence of draws is below.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The four models were then compared using the leave one out function (LOO) in rstanarm. This function will test the models to determine which priors applied to the model will offer the best result. It should be noted that all MCMC converged on all models as a measure of a sound model. The trace plot below visualises this.</p>
+<hr />
+</div>
+<div id="model-selection" class="section level2">
+<h2><span class="header-section-number">2.3</span> Model Selection</h2>
+<p>The model selection involves comparing the different models that have used the three different priors.</p>
+<table class="table table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+.rownames
+</th>
+<th style="text-align:right;">
+elpd_diff
+</th>
+<th style="text-align:right;">
+se_diff
+</th>
+<th style="text-align:right;">
+elpd_loo
+</th>
+<th style="text-align:right;">
+se_elpd_loo
+</th>
+<th style="text-align:right;">
+p_loo
+</th>
+<th style="text-align:right;">
+se_p_loo
+</th>
+<th style="text-align:right;">
+looic
+</th>
+<th style="text-align:right;">
+se_looic
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+glm_price_weak
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+-543602.9
+</td>
+<td style="text-align:right;">
+161.3315
+</td>
+<td style="text-align:right;">
+7.916135
+</td>
+<td style="text-align:right;">
+0.5056034
+</td>
+<td style="text-align:right;">
+1087206
+</td>
+<td style="text-align:right;">
+322.6630
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+glm_price_informative
+</td>
+<td style="text-align:right;">
+-0.0081569
+</td>
+<td style="text-align:right;">
+0.0198058
+</td>
+<td style="text-align:right;">
+-543602.9
+</td>
+<td style="text-align:right;">
+161.3302
+</td>
+<td style="text-align:right;">
+7.910412
+</td>
+<td style="text-align:right;">
+0.5098467
+</td>
+<td style="text-align:right;">
+1087206
+</td>
+<td style="text-align:right;">
+322.6603
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+glm_price_flat
+</td>
+<td style="text-align:right;">
+-0.0263548
+</td>
+<td style="text-align:right;">
+0.0468514
+</td>
+<td style="text-align:right;">
+-543603.0
+</td>
+<td style="text-align:right;">
+161.3322
+</td>
+<td style="text-align:right;">
+7.925820
+</td>
+<td style="text-align:right;">
+0.5089566
+</td>
+<td style="text-align:right;">
+1087206
+</td>
+<td style="text-align:right;">
+322.6644
+</td>
+</tr>
+</tbody>
+</table>
+<p>The LOO information criterion (LOOIC) is used in a similar manner to the frequentist statistics measure of Akaike Information Criterion (AIC). Based on the results above it can be seen that the models all produce good results with the ‘weak’ informative prior offering the best results. This will be the model we will continue to develop. LOO Log-predictive density values to find observations that are difficult to predict <span class="citation">(Hoff <a href="#ref-RefWorks:doc:5ef157f4e4b0e161b765e5e1" role="doc-biblioref">2009</a>; Gabry and Goodrich, <a href="#ref-RefWorks:doc:5ef8d3d6e4b058b42ee6071f" role="doc-biblioref">n.d.</a>)</span>.</p>
+<hr />
+<div id="posterior-predictive-checking-ppc" class="section level4">
+<h4><span class="header-section-number">2.3.0.1</span> Posterior Predictive Checking {PPC}</h4>
+<p>Bayesian models with proper priors are generative models as such we need to check the priors used in the model. This is done by assessing the priors based on the marginal distribution of the data - this reflects the interplay between the prior distribution on the parameters and the likelihood <span class="citation">(Gelman and Gelman <a href="#ref-RefWorks:doc:5ed4c453e4b0f66fe007b531" role="doc-biblioref">2013</a>)</span>.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-4-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<p>Visually the model appears to be underestimating on the posterior predictive check in the line graph above. Further investigation with the box plot highlights that the higher values from the original data set have influenced the posteriors. The overall fit for the model is fair, the shape approximates the original Data but there is an underestimation in the predicted price based on the model variables.</p>
+<p>This is a good time to raise the issue around the interaction between priors and posterior results. Recall that Bayesian modelling methods are useful for small data sets or data sets with missing data. With a small data set the predictions will approach the priors, as the number of observations increases then the predictions will approach the posterior results.</p>
+<p>Another useful check is to consider the posterior against the prior by parameter.</p>
+<p><img src="_main_files/figure-html/Posterior%20Vs%20Prior-1.png" width="672" /></p>
+<hr />
+<pre><code>## # Description of Posterior Distributions
+## 
+## Parameter                            |    Median |                     89% CI | pd |                89% ROPE | % in ROPE |  Rhat |      ESS
+## -------------------------------------------------------------------------------------------------------------------------------------------
+## (Intercept)                          | 1.228e+06 | [  1.221e+06,   1.234e+06] |  1 | [-40906.361, 40906.361] |         0 | 1.000 | 4104.447
+## distance_from_CBD                    | -9837.504 | [  -9962.828,   -9704.404] |  1 | [-40906.361, 40906.361] |       100 | 0.999 | 5417.531
+## distance_from_closest_private_school | -5635.805 | [  -8429.008,   -3286.470] |  1 | [-40906.361, 40906.361] |       100 | 1.000 | 4400.437
+## distance_from_closest_station        | 16528.637 | [  15527.156,   17573.042] |  1 | [-40906.361, 40906.361] |       100 | 0.999 | 5234.325
+## distance_from_closest_public_school  | 58703.979 | [  52491.160,   64855.757] |  1 | [-40906.361, 40906.361] |         0 | 0.999 | 5518.889</code></pre>
+<p>The results above allow us to assess the centrality (median), the uncertainty (the credible interval, CI), the effect existence and effective significance - all of these values are appropriate for the model.</p>
+<p>Based on the results above from the model we can offer a 90% likelihood that the property price will be between 1.22mil and 1.23mil , the mean of 1.22mil. This seems a little unrealistic noting variance in prices between Sydney City and the outer suburbs. In order to further refine this model we will break it down by postcode to determine a more specific estimate that will be useful to future planners.</p>
+<p>After further preparing the data and running a bayesian model for each of the post codes the results were varied. Some of the postcodes only had a few observations - 3 or 4 and as such the results from the model weren’t reliable. To demonstrate this the following postcodes were taken at random to determine effectiveness of the modelling, 2095, 2099, 2147, 2170, 2231. These postcodes are generally in the likley development areas for the Greater Sydney Region Commission.</p>
+<p>Postcode 2095.</p>
+<pre><code>## [[1]]
+## stan_glm
+##  family:       gaussian [identity]
+##  formula:      price ~ distance_from_CBD + distance_from_closest_private_school + 
+##     distance_from_closest_station + distance_from_closest_public_school
+##  observations: 7
+##  predictors:   5
+## ------
+##                                      Median      MAD_SD     
+## (Intercept)                          -11171169.3   6933674.7
+## distance_from_CBD                       779759.2   1381131.9
+## distance_from_closest_private_school   1994519.4   1326481.6
+## distance_from_closest_station           403926.9   1828820.8
+## distance_from_closest_public_school    -352967.2    725578.7
+## 
+## Auxiliary parameter(s):
+##       Median   MAD_SD  
+## sigma 317287.0 117729.3
+## 
+## ------
+## * For help interpreting the printed output see ?print.stanreg
+## * For info on the priors used see ?prior_summary.stanreg</code></pre>
+<hr />
+<p>Postcode 2099.</p>
+<pre><code>## [[1]]
+## stan_glm
+##  family:       gaussian [identity]
+##  formula:      price ~ distance_from_CBD + distance_from_closest_private_school + 
+##     distance_from_closest_station + distance_from_closest_public_school
+##  observations: 100
+##  predictors:   5
+## ------
+##                                      Median    MAD_SD   
+## (Intercept)                          4018047.8 1182902.2
+## distance_from_CBD                    -164709.8   91147.7
+## distance_from_closest_private_school  506864.7  144458.7
+## distance_from_closest_station         -38934.9   82940.2
+## distance_from_closest_public_school  -275234.2  153160.5
+## 
+## Auxiliary parameter(s):
+##       Median   MAD_SD  
+## sigma 399029.9  28941.3
+## 
+## ------
+## * For help interpreting the printed output see ?print.stanreg
+## * For info on the priors used see ?prior_summary.stanreg</code></pre>
+<hr />
+<p>Postcode 2147</p>
+<pre><code>## [[1]]
+## stan_glm
+##  family:       gaussian [identity]
+##  formula:      price ~ distance_from_CBD + distance_from_closest_private_school + 
+##     distance_from_closest_station + distance_from_closest_public_school
+##  observations: 186
+##  predictors:   5
+## ------
+##                                      Median   MAD_SD  
+## (Intercept)                          695045.7 368677.7
+## distance_from_CBD                     -6177.9  13151.0
+## distance_from_closest_private_school  71768.7  23385.2
+## distance_from_closest_station         75017.0  22210.5
+## distance_from_closest_public_school   95854.2  46234.3
+## 
+## Auxiliary parameter(s):
+##       Median   MAD_SD  
+## sigma 124645.2   6587.0
+## 
+## ------
+## * For help interpreting the printed output see ?print.stanreg
+## * For info on the priors used see ?prior_summary.stanreg</code></pre>
+<hr />
+<p>Postcode 2170</p>
+<pre><code>## [[1]]
+## stan_glm
+##  family:       gaussian [identity]
+##  formula:      price ~ distance_from_CBD + distance_from_closest_private_school + 
+##     distance_from_closest_station + distance_from_closest_public_school
+##  observations: 217
+##  predictors:   5
+## ------
+##                                      Median    MAD_SD   
+## (Intercept)                          1019976.5  106301.9
+## distance_from_CBD                     -14015.8    3709.8
+## distance_from_closest_private_school   77945.4   26575.7
+## distance_from_closest_station          43569.2   15068.5
+## distance_from_closest_public_school    14759.6   37370.4
+## 
+## Auxiliary parameter(s):
+##       Median   MAD_SD  
+## sigma 152965.8   7290.8
+## 
+## ------
+## * For help interpreting the printed output see ?print.stanreg
+## * For info on the priors used see ?prior_summary.stanreg</code></pre>
+<hr />
+<p>Postcode 2231</p>
+<pre><code>## [[1]]
+## stan_glm
+##  family:       gaussian [identity]
+##  formula:      price ~ distance_from_CBD + distance_from_closest_private_school + 
+##     distance_from_closest_station + distance_from_closest_public_school
+##  observations: 9
+##  predictors:   5
+## ------
+##                                      Median     MAD_SD    
+## (Intercept)                          21937322.8 15746140.3
+## distance_from_CBD                    -1155945.0  1340572.3
+## distance_from_closest_private_school    47147.9  1159968.9
+## distance_from_closest_station         -364705.1   392683.5
+## distance_from_closest_public_school     63329.3   518687.5
+## 
+## Auxiliary parameter(s):
+##       Median   MAD_SD  
+## sigma 200359.7  61232.0
+## 
+## ------
+## * For help interpreting the printed output see ?print.stanreg
+## * For info on the priors used see ?prior_summary.stanreg</code></pre>
+<hr />
+<p>The varied medians in addition to the significantly different standard deviations across the models demonstrate strong localised effects in each of the postcodes, this is to be expected as there is both differences in the number of observations and the training data for each of the postcodes varies somewhat. It should be noted that the influences of the distances to services was very different in each of the postcodes selected and this likely affected the modelling parameters.</p>
+<p>** Note ** I was unable to run all of the nested models for the complete data set due to computing power and errors in the Data, some postcodes only had a single observation.</p>
+
+</div>
+</div>
+</div>
+<h3>Biblography</h3>
+<div id="refs" class="references">
+<div id="ref-RefWorks:doc:5ef8d3d6e4b058b42ee6071f">
+<p>Gabry, Jonah, and Ben Goodrich. n.d. “Estimating Regularized Linear Models with Rstanarm.” <a href="https://mc-stan.org/rstanarm/articles/lm.html">https://mc-stan.org/rstanarm/articles/lm.html</a>.</p>
+</div>
+<div id="ref-RefWorks:doc:5ed4c453e4b0f66fe007b531">
+<p>Gelman, Andrew, and Andrew Gelman. 2013. <em>Bayesian Data Analysis</em>. 3rd ed. Boca Raton, Florida: CRC Press.</p>
+</div>
+<div id="ref-RefWorks:doc:5ef157f4e4b0e161b765e5e1">
+<p>Hoff, Peter D. 2009. <em>A First Course in Bayesian Statistical Methods</em>. 1st ed. New York, NY: Springer New York. <a href="https://doi.org/10.1007/978-0-387-92407-6">https://doi.org/10.1007/978-0-387-92407-6</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="findings-and-reflection.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

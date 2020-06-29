@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Findings and Reflection | Baysian Linear Models in the Property Markets</title>
+  <meta name="description" content="This is a Bayesian Model investigation into property prices in the Sydney Region" />
+  <meta name="generator" content="bookdown 0.19.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Findings and Reflection | Baysian Linear Models in the Property Markets" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a Bayesian Model investigation into property prices in the Sydney Region" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Findings and Reflection | Baysian Linear Models in the Property Markets" />
+  
+  <meta name="twitter:description" content="This is a Bayesian Model investigation into property prices in the Sydney Region" />
+  
+
+<meta name="author" content="James Murray" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-preparation-and-modelling.html"/>
+<link rel="next" href="conclusions.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-use-bayesian"><i class="fa fa-check"></i><b>1.1</b> Why use Bayesian?</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#frequentists"><i class="fa fa-check"></i>Frequentists</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#baysian"><i class="fa fa-check"></i>Baysian</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-preparation-and-modelling.html"><a href="data-preparation-and-modelling.html"><i class="fa fa-check"></i><b>2</b> Data Preparation and Modelling</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-preparation-and-modelling.html"><a href="data-preparation-and-modelling.html#data-preparation"><i class="fa fa-check"></i><b>2.1</b> Data Preparation</a></li>
+<li class="chapter" data-level="2.2" data-path="data-preparation-and-modelling.html"><a href="data-preparation-and-modelling.html#modelling"><i class="fa fa-check"></i><b>2.2</b> Modelling</a></li>
+<li class="chapter" data-level="2.3" data-path="data-preparation-and-modelling.html"><a href="data-preparation-and-modelling.html#model-selection"><i class="fa fa-check"></i><b>2.3</b> Model Selection</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="findings-and-reflection.html"><a href="findings-and-reflection.html"><i class="fa fa-check"></i><b>3</b> Findings and Reflection</a><ul>
+<li class="chapter" data-level="3.1" data-path="findings-and-reflection.html"><a href="findings-and-reflection.html#the-bayesian-glm"><i class="fa fa-check"></i><b>3.1</b> The Bayesian GLM</a></li>
+<li class="chapter" data-level="3.2" data-path="findings-and-reflection.html"><a href="findings-and-reflection.html#the-glm-compared-with-the-bayesian-model"><i class="fa fa-check"></i><b>3.2</b> The GLM compared with the Bayesian Model</a></li>
+<li class="chapter" data-level="3.3" data-path="findings-and-reflection.html"><a href="findings-and-reflection.html#the-postcode-specific-model"><i class="fa fa-check"></i><b>3.3</b> The Postcode specific model</a></li>
+<li class="chapter" data-level="3.4" data-path="findings-and-reflection.html"><a href="findings-and-reflection.html#reflections"><i class="fa fa-check"></i><b>3.4</b> Reflections</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>4</b> Conclusions</a><ul>
+<li class="chapter" data-level="4.1" data-path="conclusions.html"><a href="conclusions.html#are-the-results-reliable"><i class="fa fa-check"></i><b>4.1</b> Are the results reliable?</a></li>
+<li class="chapter" data-level="4.2" data-path="conclusions.html"><a href="conclusions.html#can-the-model-be-refined-and-how"><i class="fa fa-check"></i><b>4.2</b> Can the model be refined and how?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="annex-1.html"><a href="annex-1.html"><i class="fa fa-check"></i>Annex 1</a></li>
+<li class="chapter" data-level="" data-path="biblography.html"><a href="biblography.html"><i class="fa fa-check"></i>Biblography</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Baysian Linear Models in the Property Markets</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="findings-and-reflection" class="section level1">
+<h1><span class="header-section-number">3</span> Findings and Reflection</h1>
+<p>The findings for the paper can be broken into three areas, the performance of the Bayesian GLM developed, the comparison of the GLM with the Bayes GLM and the Bayes model that was developed across the postcodes for the region.</p>
+<div id="the-bayesian-glm" class="section level2">
+<h2><span class="header-section-number">3.1</span> The Bayesian GLM</h2>
+<p>The performance of the Baysian GLM is best summarised in the table below.</p>
+<table class="table table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+X1
+</th>
+<th style="text-align:right;">
+n_eff
+</th>
+<th style="text-align:right;">
+Rhat
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+mcse
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+2.5%
+</th>
+<th style="text-align:right;">
+25%
+</th>
+<th style="text-align:right;">
+50%
+</th>
+<th style="text-align:right;">
+75%
+</th>
+<th style="text-align:right;">
+97.5%
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+4104
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1227639.7
+</td>
+<td style="text-align:right;">
+59.9
+</td>
+<td style="text-align:right;">
+3834.6
+</td>
+<td style="text-align:right;">
+1220139.2
+</td>
+<td style="text-align:right;">
+1225032.0
+</td>
+<td style="text-align:right;">
+1227594.3
+</td>
+<td style="text-align:right;">
+1230336.4
+</td>
+<td style="text-align:right;">
+1235096.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+distance_from_CBD
+</td>
+<td style="text-align:right;">
+5418
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-9837.3
+</td>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+80.7
+</td>
+<td style="text-align:right;">
+-9998.1
+</td>
+<td style="text-align:right;">
+-9891.0
+</td>
+<td style="text-align:right;">
+-9837.5
+</td>
+<td style="text-align:right;">
+-9784.6
+</td>
+<td style="text-align:right;">
+-9679.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+distance_from_closest_private_school
+</td>
+<td style="text-align:right;">
+4400
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-5656.2
+</td>
+<td style="text-align:right;">
+24.2
+</td>
+<td style="text-align:right;">
+1604.7
+</td>
+<td style="text-align:right;">
+-8773.6
+</td>
+<td style="text-align:right;">
+-6708.3
+</td>
+<td style="text-align:right;">
+-5635.8
+</td>
+<td style="text-align:right;">
+-4581.7
+</td>
+<td style="text-align:right;">
+-2469.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+distance_from_closest_station
+</td>
+<td style="text-align:right;">
+5234
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+16533.6
+</td>
+<td style="text-align:right;">
+9.0
+</td>
+<td style="text-align:right;">
+651.7
+</td>
+<td style="text-align:right;">
+15234.5
+</td>
+<td style="text-align:right;">
+16100.7
+</td>
+<td style="text-align:right;">
+16528.6
+</td>
+<td style="text-align:right;">
+16974.4
+</td>
+<td style="text-align:right;">
+17797.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+distance_from_closest_public_school
+</td>
+<td style="text-align:right;">
+5519
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+58758.6
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+<td style="text-align:right;">
+3804.3
+</td>
+<td style="text-align:right;">
+51246.0
+</td>
+<td style="text-align:right;">
+56222.1
+</td>
+<td style="text-align:right;">
+58704.0
+</td>
+<td style="text-align:right;">
+61289.5
+</td>
+<td style="text-align:right;">
+66318.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sigma
+</td>
+<td style="text-align:right;">
+2644
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+340961.7
+</td>
+<td style="text-align:right;">
+23.8
+</td>
+<td style="text-align:right;">
+1221.2
+</td>
+<td style="text-align:right;">
+338567.7
+</td>
+<td style="text-align:right;">
+340115.7
+</td>
+<td style="text-align:right;">
+340974.0
+</td>
+<td style="text-align:right;">
+341772.9
+</td>
+<td style="text-align:right;">
+343367.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mean_PPD
+</td>
+<td style="text-align:right;">
+2289
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+939729.2
+</td>
+<td style="text-align:right;">
+51.4
+</td>
+<td style="text-align:right;">
+2460.0
+</td>
+<td style="text-align:right;">
+934876.8
+</td>
+<td style="text-align:right;">
+938113.9
+</td>
+<td style="text-align:right;">
+939744.0
+</td>
+<td style="text-align:right;">
+941412.6
+</td>
+<td style="text-align:right;">
+944568.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+log-posterior
+</td>
+<td style="text-align:right;">
+1987
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-543619.9
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+-543624.2
+</td>
+<td style="text-align:right;">
+-543620.8
+</td>
+<td style="text-align:right;">
+-543619.5
+</td>
+<td style="text-align:right;">
+-543618.6
+</td>
+<td style="text-align:right;">
+-543617.5
+</td>
+</tr>
+</tbody>
+</table>
+<p>While the R-hat values were all sound and the chains all converged as expected the actual predictive value of the model was lacking when trying to answer the research question. The standard deviation it offers was somewhat smaller than that for the GLM model using the same parameters</p>
+</div>
+<div id="the-glm-compared-with-the-bayesian-model" class="section level2">
+<h2><span class="header-section-number">3.2</span> The GLM compared with the Bayesian Model</h2>
+<p>The results from the Bayesian model offer a credibility interval rather than a confidence interval. The credible interval (95%) offered by the Bayesian GLM was between $1220139.20 and 1235096.30 with a SD of 3834.60. The original linear model demonstrated similar figures. What the Baysian model does allow us to do is offer a different way to interpret the results; by using the credibility interval as opposed to the confidence interval.</p>
+</div>
+<div id="the-postcode-specific-model" class="section level2">
+<h2><span class="header-section-number">3.3</span> The Postcode specific model</h2>
+<p>As was noted at the end of <a href="#PPC">part 2</a>, the processing power to run a complex model such as this was significant. In order to ensure the model was run only 10% of the train data was used which no doubt had an affect on the quality of the results. Of interest though even with a limited comparison between the models it is evident that the geographic specifics within the region will impact on property prices.</p>
+</div>
+<div id="reflections" class="section level2">
+<h2><span class="header-section-number">3.4</span> Reflections</h2>
+<p>Priors, Priors and more Priors… The evidence required to set informative priors is troublesome. This is where the art comes into play as opposed to the science, although the idea is that they are set based on <em>expert Knowldge</em>. The original linear model developed in conjunction with summary statistics offered some insights into how the models might perform in a relatively simple modelling scenario. If the model was expanded to include house features, location features, population considerations and financial indicators (to name a few) then the setting of the priors would be challenging. The default settings on the rstanarm package seems to work reasonably well and as has been demonstrated in this paper they will likely outperform the experts.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-preparation-and-modelling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
